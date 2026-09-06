@@ -1,0 +1,2139 @@
+OLIGOPOLY — OID PRODUCT ENTRY LIST
+Prepared from: wc-product-export-6-9-2026-1788713468502.csv
+Source export date: September 6, 2026
+
+83 included catalog records | 16 nutraceutical records excluded | 4 archived duplicates excluded
+
+SKU STANDARDIZATION — PROPOSED REPLACEMENTS
+Pattern: OP-R- plus the website product ID padded to five digits. Example: product ID 12 becomes OP-R-00012. R means research catalog. Each catalog record, kit, bundle, and panel has its own identifier. IDs are identifiers, not strengths. All 83 replacements are unique and use exactly the same pattern; no compound names or abbreviations appear in the new SKUs.
+Use the same proposed SKU in WooCommerce and OID when applying the change. Neither system has been changed by this document. Keep the original-to-new mapping for existing orders and integrations. Product identity, ingredients, and strengths remain accurately disclosed. Neutral SKU naming does not establish processor or regulatory approval.
+Original export check: all 83 included SKUs were nonblank and unique. Their formats varied (OP-, OPL-, ORP-, kits and stacks). No duplicate SKU correction was needed; this revision standardizes naming.
+A source SKU cannot verify the actual chemical, strength, package, or publication status. Missing specifications remain flagged below. In particular, Thymosin Alpha 1 has 10MG in its old SKU but no strength in its exported name.
+
+HOW TO USE
+Each entry follows the OID form in left-to-right, top-to-bottom order. Copy the value after each field label. Select dropdown values manually. Bracketed instructions are NOT values to paste.
+Product names and original SKUs come from the export; HTML entities in names are decoded. Internal SKU fields below contain PROPOSED replacement SKUs, not the current website SKUs. SKU display names reuse the product name. Canonical names are suggested normalized labels, not verified chemical identities. Product families use an existing export category; research classifications are suggested internal labels.
+UNDER_REVIEW is the staging default shown in your screenshot, not a website status or quality approval.
+The export does not contain publication status/catalog visibility. These are non-archived research records in your website export, including out-of-stock records; live publication has not been verified.
+Physical form and storage requirements are absent for ALL records. Do not accept the form’s default Lyophilized vial without checking the product specification. Leave storage blank if optional until verified. If OID requires a missing field, complete the verified specification before submitting that record.
+Package quantity means units in a sales package, NOT stock on hand. Quantity 6 for six-vial kits and 3/6/9 for named bundles comes from their names. Quantity 1 and package unit vial for individual products are proposed conventions requiring confirmation. Other collection counts are unknown.
+Strength is the nominal amount per vial, not a dose or kit total. For blends with explicit component amounts, the numeric strength is their combined total; component amounts remain in the name. For water, 10 mL is volume, not a mass strength. Unknown strengths are left unresolved.
+NAD+ 500 mg Research Material is included. The separate NAD+ record categorized Longevity/Wellness is excluded as a nutraceutical.
+The two Neurobiology Research Panel records have different SKUs (OP-STK-COGNITIVE and ORP-NEURO-001); both are retained. Verify whether they represent distinct configurations before creating duplicate product masters.
+This is a manual-entry reference, not an OID import file. No OID records or inventory have been created.
+
+INDEX
+INDIVIDUAL RESEARCH MATERIALS: 35
+RESEARCH BLENDS: 10
+RESEARCH SUPPORT: 1
+SIX-VIAL KITS: 8
+CUSTOM BUNDLES: 3
+COLLECTIONS AND PANELS: 26
+01. Retatrutide 10 mg Research Peptide | OP-R-00012
+02. Tirzepatide 10 mg Research Peptide | OP-R-00039
+03. Semaglutide 10 mg Research Peptide | OP-R-00047
+04. BPC-157 10 mg Research Peptide | OP-R-00049
+05. TB-500 10 mg Research Peptide | OP-R-00052
+06. AOD-9604 10 mg Research Peptide | OP-R-00060
+07. NAD+ 500 mg Research Material | OP-R-00063
+08. Cagrilintide 5 mg Research Peptide | OP-R-00436
+09. GHK-Cu 50 mg Research Peptide | OP-R-00441
+10. Tesamorelin 10mg Research Peptide | OP-R-00442
+11. MOTS-c 10 mg Research Peptide | OP-R-00443
+12. SS-31 10mg Research Peptide | OP-R-00444
+13. Thymosin Alpha 1 Research Peptide | OP-R-00445
+14. Semax 10 mg Research Peptide | OP-R-00446
+15. Selank 5 mg Research Peptide | OP-R-00447
+16. Epitalon 50mg Research Peptide | OP-R-00448
+17. Ipamorelin 5mg Research Peptide | OP-R-00449
+18. IGF-1 LR3 1mg Research Peptide | OP-R-00452
+19. PEG-MGF 2mg Research Peptide | OP-R-00453
+20. Follistatin-344 1mg Research Peptide | OP-R-00454
+21. KPV 10 mg Research Peptide | OP-R-00455
+22. Pinealon 5mg Research Peptide | OP-R-00456
+23. Dihexa 10mg Research Peptide | OP-R-00457
+24. DSIP 5 mg Research Peptide | OP-R-00458
+25. PT-141 10 mg Research Peptide | OP-R-00459
+26. Melanotan II 10mg Research Peptide | OP-R-00460
+27. ARA-290 10mg Research Peptide | OP-R-00461
+28. Thymosin Beta-4 10mg Research Peptide | OP-R-00462
+29. CJC-1295 (No DAC) 2mg Research Peptide | OP-R-00815
+30. Retatrutide 5 mg Research Peptide | OP-R-03395
+31. Retatrutide 20 mg Research Peptide | OP-R-03396
+32. Semaglutide 5 mg Research Peptide | OP-R-03397
+33. BPC-157 5 mg Research Peptide | OP-R-03398
+34. CJC-1295 No DAC 5 mg Research Peptide | OP-R-03619
+35. Tirzepatide 20 mg Research Peptide | OP-R-03620
+36. BPC-157 10 mg + TB-500 10 mg Research Blend | OP-R-00055
+37. Semaglutide 5 mg + Cagrilintide 5 mg Research Blend | OP-R-01942
+38. Retatrutide + Cagrilintide Blend Research Peptide | OP-R-01943
+39. BPC-157 + KPV Blend Research Peptide | OP-R-01945
+40. MOTS-c + SS-31 Blend Research Peptide | OP-R-01946
+41. Epitalon + Pinealon Blend Research Peptide | OP-R-01947
+42. KLOW Research Blend 80 mg | OP-R-01948
+43. GLP-2TZ Blend Research Peptide | OP-R-01949
+44. GLP-3RT Blend Research Peptide | OP-R-01950
+45. KPV 10 mg + GHK-Cu 50 mg Research Blend | OP-R-03621
+46. Bacteriostatic Water 10 mL Research Support | OP-R-00816
+47. Tirzepatide 10 mg - 6 Vial Research Kit | OP-R-03454
+48. Semaglutide 5 mg - 6 Vial Research Kit | OP-R-03457
+49. NAD+ 500 mg - 6 Vial Research Kit | OP-R-03459
+50. Selank 5 mg - 6 Vial Research Kit | OP-R-03463
+51. Retatrutide 5 mg - 6 Vial Research Kit | OP-R-03465
+52. GHK-Cu 50 mg - 6 Vial Research Kit | OP-R-03468
+53. Retatrutide 20 mg - 6 Vial Research Kit | OP-R-03470
+54. Cagrilintide 5 mg - 6 Vial Research Kit | OP-R-03472
+55. Build Your Research Bundle - 3 Vials | OP-R-03447
+56. Build Your Research Bundle - 6 Vials | OP-R-03450
+57. Build Your Research Bundle - 9 Vials | OP-R-03452
+58. Advanced Multi-Pathway Research Collection | OP-R-00070
+59. Longevity Research Collection | OP-R-00468
+60. Neurobiology Research Panel | OP-R-00469
+61. Growth-Hormone Axis Research Panel | OP-R-00470
+62. Longevity & Cellular Research Stack 2026 | OP-R-00471
+63. Immune Optimization Research Stack | OP-R-00472
+64. Comparative Signaling Research Panel | OP-R-00473
+65. Cellular Response Research Panel | OP-R-00477
+66. Tissue Response Research Panel | OP-R-00478
+67. Introductory Analytical Reference Set | OP-R-00479
+68. Metabolic Research Comparative Panel I | OP-R-03316
+69. Metabolic Research Comparative Panel II | OP-R-03317
+70. Triple Incretin Comparative Panel | OP-R-03318
+71. Retatrutide Concentration Reference Set | OP-R-03319
+72. Tirzepatide Concentration Reference Set | OP-R-03320
+73. Semaglutide Concentration Reference Set | OP-R-03321
+74. Metabolic Signaling Research Panel | OP-R-03322
+75. Cellular Biology Research Panel | OP-R-03323
+76. Cellular Bioenergetics Research Panel | OP-R-03324
+77. Neurobiology Research Panel | OP-R-03325
+78. Cellular & Neurobiology Reference Set | OP-R-03326
+79. OligoPoly Discovery Collection | OP-R-03327
+80. Metabolic Pathways Research Collection | OP-R-03474
+81. Cellular Energy Research Collection | OP-R-03477
+82. Neurocognitive Pathways Research Collection | OP-R-03480
+83. Regenerative Biology Research Collection | OP-R-03483
+
+ORIGINAL-TO-NEW SKU MAPPING
+Website ID | Original website SKU | Proposed OID / website SKU | Product
+12 | OP-MET-RETA-10MG | OP-R-00012 | Retatrutide 10 mg Research Peptide
+39 | OP-MET-TIRZ-10MG | OP-R-00039 | Tirzepatide 10 mg Research Peptide
+47 | OP-MET-SEMA-10MG | OP-R-00047 | Semaglutide 10 mg Research Peptide
+49 | OP-REC-BPC157-10MG | OP-R-00049 | BPC-157 10 mg Research Peptide
+52 | OP-REC-TB500-10MG | OP-R-00052 | TB-500 10 mg Research Peptide
+60 | OP-MET-AOD9604-10MG | OP-R-00060 | AOD-9604 10 mg Research Peptide
+63 | OP-AUX-NAD-500MG | OP-R-00063 | NAD+ 500 mg Research Material
+436 | OP-MET-CAGRI-5MG | OP-R-00436 | Cagrilintide 5 mg Research Peptide
+441 | OP-LON-GHKCU-50MG | OP-R-00441 | GHK-Cu 50 mg Research Peptide
+442 | OP-GH-TESA-10MG | OP-R-00442 | Tesamorelin 10mg Research Peptide
+443 | OP-AUX-MOTSC-10MG | OP-R-00443 | MOTS-c 10 mg Research Peptide
+444 | OP-LON-SS31-10MG | OP-R-00444 | SS-31 10mg Research Peptide
+445 | OP-IMM-TA1-10MG | OP-R-00445 | Thymosin Alpha 1 Research Peptide
+446 | OP-COG-SEMAX-10MG | OP-R-00446 | Semax 10 mg Research Peptide
+447 | OP-COG-SELANK-5MG | OP-R-00447 | Selank 5 mg Research Peptide
+448 | OP-LON-EPIT-50MG | OP-R-00448 | Epitalon 50mg Research Peptide
+449 | OP-GH-IPAM-5MG | OP-R-00449 | Ipamorelin 5mg Research Peptide
+452 | OP-GH-IGF1LR3-1MG | OP-R-00452 | IGF-1 LR3 1mg Research Peptide
+453 | OP-GH-PEGMGF-2MG | OP-R-00453 | PEG-MGF 2mg Research Peptide
+454 | OP-GH-FST344-1MG | OP-R-00454 | Follistatin-344 1mg Research Peptide
+455 | OP-IMM-KPV-10MG | OP-R-00455 | KPV 10 mg Research Peptide
+456 | OP-LON-PINEALON-5MG | OP-R-00456 | Pinealon 5mg Research Peptide
+457 | OP-COG-DIHEXA-10MG | OP-R-00457 | Dihexa 10mg Research Peptide
+458 | OP-COG-DSIP-5MG | OP-R-00458 | DSIP 5 mg Research Peptide
+459 | OP-COG-PT141-10MG | OP-R-00459 | PT-141 10 mg Research Peptide
+460 | OP-MEL-MT2-10MG | OP-R-00460 | Melanotan II 10mg Research Peptide
+461 | OP-REC-ARA290-10MG | OP-R-00461 | ARA-290 10mg Research Peptide
+462 | OP-REC-TB4-10MG | OP-R-00462 | Thymosin Beta-4 10mg Research Peptide
+815 | OP-GH-CJC1295-NODAC-2MG | OP-R-00815 | CJC-1295 (No DAC) 2mg Research Peptide
+3395 | OP-MET-RETA-5MG | OP-R-03395 | Retatrutide 5 mg Research Peptide
+3396 | OP-MET-RETA-20MG | OP-R-03396 | Retatrutide 20 mg Research Peptide
+3397 | OP-MET-SEMA-5MG | OP-R-03397 | Semaglutide 5 mg Research Peptide
+3398 | OP-REC-BPC157-5MG | OP-R-03398 | BPC-157 5 mg Research Peptide
+3619 | OP-GH-CJC1295-NODAC-5MG | OP-R-03619 | CJC-1295 No DAC 5 mg Research Peptide
+3620 | OP-MET-TIRZ-20MG | OP-R-03620 | Tirzepatide 20 mg Research Peptide
+55 | OP-REC-BPCTB-20MG | OP-R-00055 | BPC-157 10 mg + TB-500 10 mg Research Blend
+1942 | OP-MET-SEMACAGRI-10MG | OP-R-01942 | Semaglutide 5 mg + Cagrilintide 5 mg Research Blend
+1943 | OPL-BLEND-RETA-CAGRI | OP-R-01943 | Retatrutide + Cagrilintide Blend Research Peptide
+1945 | OPL-BLEND-BPC-KPV | OP-R-01945 | BPC-157 + KPV Blend Research Peptide
+1946 | OPL-BLEND-MOTSC-SS31 | OP-R-01946 | MOTS-c + SS-31 Blend Research Peptide
+1947 | OPL-BLEND-EPIT-PIN | OP-R-01947 | Epitalon + Pinealon Blend Research Peptide
+1948 | OP-REC-KLOW-80MG | OP-R-01948 | KLOW Research Blend 80 mg
+1949 | OPL-BLEND-GLP2TZ | OP-R-01949 | GLP-2TZ Blend Research Peptide
+1950 | OPL-BLEND-GLP3RT | OP-R-01950 | GLP-3RT Blend Research Peptide
+3621 | OP-REC-KPVGHK-60MG | OP-R-03621 | KPV 10 mg + GHK-Cu 50 mg Research Blend
+816 | OP-AUX-BACWATER-10ML | OP-R-00816 | Bacteriostatic Water 10 mL Research Support
+3454 | OP-KIT-TIRZ-10MG-6 | OP-R-03454 | Tirzepatide 10 mg - 6 Vial Research Kit
+3457 | OP-KIT-SEMA-5MG-6 | OP-R-03457 | Semaglutide 5 mg - 6 Vial Research Kit
+3459 | OP-KIT-NAD-500MG-6 | OP-R-03459 | NAD+ 500 mg - 6 Vial Research Kit
+3463 | OP-KIT-SELANK-5MG-6 | OP-R-03463 | Selank 5 mg - 6 Vial Research Kit
+3465 | OP-KIT-RETA-5MG-6 | OP-R-03465 | Retatrutide 5 mg - 6 Vial Research Kit
+3468 | OP-KIT-GHKCU-50MG-6 | OP-R-03468 | GHK-Cu 50 mg - 6 Vial Research Kit
+3470 | OP-KIT-RETA-20MG-6 | OP-R-03470 | Retatrutide 20 mg - 6 Vial Research Kit
+3472 | OP-KIT-CAGRI-5MG-6 | OP-R-03472 | Cagrilintide 5 mg - 6 Vial Research Kit
+3447 | OP-BUNDLE-3 | OP-R-03447 | Build Your Research Bundle - 3 Vials
+3450 | OP-BUNDLE-6 | OP-R-03450 | Build Your Research Bundle - 6 Vials
+3452 | OP-BUNDLE-9 | OP-R-03452 | Build Your Research Bundle - 9 Vials
+70 | OP-STK-ADVANCED-MULTIPATHWAY | OP-R-00070 | Advanced Multi-Pathway Research Collection
+468 | OP-STK-LONGEVITY | OP-R-00468 | Longevity Research Collection
+469 | OP-STK-COGNITIVE | OP-R-00469 | Neurobiology Research Panel
+470 | OP-STK-GHAXIS | OP-R-00470 | Growth-Hormone Axis Research Panel
+471 | OP-STK-ANTIAGING-REPAIR | OP-R-00471 | Longevity & Cellular Research Stack 2026
+472 | OP-STK-IMMUNE | OP-R-00472 | Immune Optimization Research Stack
+473 | OP-STK-PERFORMANCE-RECOVERY | OP-R-00473 | Comparative Signaling Research Panel
+477 | OP-STK-RECOVERY-CELLULAR | OP-R-00477 | Cellular Response Research Panel
+478 | OP-STK-RECOVERY-SUPPORT | OP-R-00478 | Tissue Response Research Panel
+479 | OP-STK-STARTER | OP-R-00479 | Introductory Analytical Reference Set
+3316 | ORP-MET-001 | OP-R-03316 | Metabolic Research Comparative Panel I
+3317 | ORP-MET-002 | OP-R-03317 | Metabolic Research Comparative Panel II
+3318 | ORP-MET-003 | OP-R-03318 | Triple Incretin Comparative Panel
+3319 | ORP-RET-001 | OP-R-03319 | Retatrutide Concentration Reference Set
+3320 | ORP-TIR-001 | OP-R-03320 | Tirzepatide Concentration Reference Set
+3321 | ORP-SEM-001 | OP-R-03321 | Semaglutide Concentration Reference Set
+3322 | ORP-MSR-001 | OP-R-03322 | Metabolic Signaling Research Panel
+3323 | ORP-CELL-001 | OP-R-03323 | Cellular Biology Research Panel
+3324 | ORP-CELL-002 | OP-R-03324 | Cellular Bioenergetics Research Panel
+3325 | ORP-NEURO-001 | OP-R-03325 | Neurobiology Research Panel
+3326 | ORP-NEURO-002 | OP-R-03326 | Cellular & Neurobiology Reference Set
+3327 | ORP-DISC-001 | OP-R-03327 | OligoPoly Discovery Collection
+3474 | OP-STACK-METABOLIC | OP-R-03474 | Metabolic Pathways Research Collection
+3477 | OP-STACK-CELLULAR | OP-R-03477 | Cellular Energy Research Collection
+3480 | OP-STACK-NEURO | OP-R-03480 | Neurocognitive Pathways Research Collection
+3483 | OP-STACK-REGEN | OP-R-03483 | Regenerative Biology Research Collection
+
+========================================================================
+01 / 83 — Retatrutide 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 12
+Original website SKU (reference only): OP-MET-RETA-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Retatrutide 10 mg Research Peptide
+Canonical name: Retatrutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00012
+SKU display name: Retatrutide 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+02 / 83 — Tirzepatide 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 39
+Original website SKU (reference only): OP-MET-TIRZ-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Tirzepatide 10 mg Research Peptide
+Canonical name: Tirzepatide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00039
+SKU display name: Tirzepatide 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+03 / 83 — Semaglutide 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 47
+Original website SKU (reference only): OP-MET-SEMA-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Semaglutide 10 mg Research Peptide
+Canonical name: Semaglutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00047
+SKU display name: Semaglutide 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+04 / 83 — BPC-157 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 49
+Original website SKU (reference only): OP-REC-BPC157-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: BPC-157 10 mg Research Peptide
+Canonical name: BPC-157
+Product family: Regenerative Biology Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00049
+SKU display name: BPC-157 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+05 / 83 — TB-500 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 52
+Original website SKU (reference only): OP-REC-TB500-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: TB-500 10 mg Research Peptide
+Canonical name: TB-500
+Product family: Regenerative Biology Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00052
+SKU display name: TB-500 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+06 / 83 — AOD-9604 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 60
+Original website SKU (reference only): OP-MET-AOD9604-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: AOD-9604 10 mg Research Peptide
+Canonical name: AOD-9604
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00060
+SKU display name: AOD-9604 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+07 / 83 — NAD+ 500 mg Research Material
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 63
+Original website SKU (reference only): OP-AUX-NAD-500MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: NAD+ 500 mg Research Material
+Canonical name: NAD+
+Product family: Cellular Energy Research
+Research classification: Research material
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00063
+SKU display name: NAD+ 500 mg Research Material
+Strength: 500
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+08 / 83 — Cagrilintide 5 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 436
+Original website SKU (reference only): OP-MET-CAGRI-5MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Cagrilintide 5 mg Research Peptide
+Canonical name: Cagrilintide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00436
+SKU display name: Cagrilintide 5 mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+09 / 83 — GHK-Cu 50 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 441
+Original website SKU (reference only): OP-LON-GHKCU-50MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: GHK-Cu 50 mg Research Peptide
+Canonical name: GHK-Cu
+Product family: Regenerative Biology Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00441
+SKU display name: GHK-Cu 50 mg Research Peptide
+Strength: 50
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+10 / 83 — Tesamorelin 10mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 442
+Original website SKU (reference only): OP-GH-TESA-10MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Tesamorelin 10mg Research Peptide
+Canonical name: Tesamorelin
+Product family: Growth Hormone Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00442
+SKU display name: Tesamorelin 10mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+11 / 83 — MOTS-c 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 443
+Original website SKU (reference only): OP-AUX-MOTSC-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: MOTS-c 10 mg Research Peptide
+Canonical name: MOTS-c
+Product family: Cellular Energy Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00443
+SKU display name: MOTS-c 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+12 / 83 — SS-31 10mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 444
+Original website SKU (reference only): OP-LON-SS31-10MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: SS-31 10mg Research Peptide
+Canonical name: SS-31
+Product family: Longevity Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00444
+SKU display name: SS-31 10mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+13 / 83 — Thymosin Alpha 1 Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 445
+Original website SKU (reference only): OP-IMM-TA1-10MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Thymosin Alpha 1 Research Peptide
+Canonical name: Thymosin Alpha 1
+Product family: Immune Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00445
+SKU display name: Thymosin Alpha 1 Research Peptide
+Strength: [LEAVE BLANK — not specified in export]
+Strength unit: [SELECT mg after verifying strength]
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+SKU implies 10 mg, but the name omits strength. Confirm 10 mg against the product specification before entering it.
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+14 / 83 — Semax 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 446
+Original website SKU (reference only): OP-COG-SEMAX-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Semax 10 mg Research Peptide
+Canonical name: Semax
+Product family: Cognitive Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00446
+SKU display name: Semax 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+15 / 83 — Selank 5 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 447
+Original website SKU (reference only): OP-COG-SELANK-5MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Selank 5 mg Research Peptide
+Canonical name: Selank
+Product family: Cognitive Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00447
+SKU display name: Selank 5 mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+16 / 83 — Epitalon 50mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 448
+Original website SKU (reference only): OP-LON-EPIT-50MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Epitalon 50mg Research Peptide
+Canonical name: Epitalon
+Product family: Longevity Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00448
+SKU display name: Epitalon 50mg Research Peptide
+Strength: 50
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+17 / 83 — Ipamorelin 5mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 449
+Original website SKU (reference only): OP-GH-IPAM-5MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Ipamorelin 5mg Research Peptide
+Canonical name: Ipamorelin
+Product family: Growth Hormone Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00449
+SKU display name: Ipamorelin 5mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+18 / 83 — IGF-1 LR3 1mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 452
+Original website SKU (reference only): OP-GH-IGF1LR3-1MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: IGF-1 LR3 1mg Research Peptide
+Canonical name: IGF-1 LR3
+Product family: Growth Hormone Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00452
+SKU display name: IGF-1 LR3 1mg Research Peptide
+Strength: 1
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+19 / 83 — PEG-MGF 2mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 453
+Original website SKU (reference only): OP-GH-PEGMGF-2MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: PEG-MGF 2mg Research Peptide
+Canonical name: PEG-MGF
+Product family: Growth Hormone Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00453
+SKU display name: PEG-MGF 2mg Research Peptide
+Strength: 2
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+20 / 83 — Follistatin-344 1mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 454
+Original website SKU (reference only): OP-GH-FST344-1MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Follistatin-344 1mg Research Peptide
+Canonical name: Follistatin-344
+Product family: Growth Hormone Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00454
+SKU display name: Follistatin-344 1mg Research Peptide
+Strength: 1
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+21 / 83 — KPV 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 455
+Original website SKU (reference only): OP-IMM-KPV-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: KPV 10 mg Research Peptide
+Canonical name: KPV
+Product family: Regenerative Biology Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00455
+SKU display name: KPV 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+22 / 83 — Pinealon 5mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 456
+Original website SKU (reference only): OP-LON-PINEALON-5MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Pinealon 5mg Research Peptide
+Canonical name: Pinealon
+Product family: Longevity Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00456
+SKU display name: Pinealon 5mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+23 / 83 — Dihexa 10mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 457
+Original website SKU (reference only): OP-COG-DIHEXA-10MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Dihexa 10mg Research Peptide
+Canonical name: Dihexa
+Product family: Cognitive Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00457
+SKU display name: Dihexa 10mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+24 / 83 — DSIP 5 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 458
+Original website SKU (reference only): OP-COG-DSIP-5MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: DSIP 5 mg Research Peptide
+Canonical name: DSIP
+Product family: Cognitive Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00458
+SKU display name: DSIP 5 mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+25 / 83 — PT-141 10 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 459
+Original website SKU (reference only): OP-COG-PT141-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: PT-141 10 mg Research Peptide
+Canonical name: PT-141
+Product family: Cognitive Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00459
+SKU display name: PT-141 10 mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+26 / 83 — Melanotan II 10mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 460
+Original website SKU (reference only): OP-MEL-MT2-10MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Melanotan II 10mg Research Peptide
+Canonical name: Melanotan II
+Product family: Cellular Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00460
+SKU display name: Melanotan II 10mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+27 / 83 — ARA-290 10mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 461
+Original website SKU (reference only): OP-REC-ARA290-10MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: ARA-290 10mg Research Peptide
+Canonical name: ARA-290
+Product family: Cellular Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00461
+SKU display name: ARA-290 10mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+28 / 83 — Thymosin Beta-4 10mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 462
+Original website SKU (reference only): OP-REC-TB4-10MG
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Thymosin Beta-4 10mg Research Peptide
+Canonical name: Thymosin Beta-4
+Product family: Cellular Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00462
+SKU display name: Thymosin Beta-4 10mg Research Peptide
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+29 / 83 — CJC-1295 (No DAC) 2mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 815
+Original website SKU (reference only): OP-GH-CJC1295-NODAC-2MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: CJC-1295 (No DAC) 2mg Research Peptide
+Canonical name: CJC-1295 (No DAC)
+Product family: Growth Hormone Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00815
+SKU display name: CJC-1295 (No DAC) 2mg Research Peptide
+Strength: 2
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+30 / 83 — Retatrutide 5 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 3395
+Original website SKU (reference only): OP-MET-RETA-5MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Retatrutide 5 mg Research Peptide
+Canonical name: Retatrutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03395
+SKU display name: Retatrutide 5 mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+31 / 83 — Retatrutide 20 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 3396
+Original website SKU (reference only): OP-MET-RETA-20MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Retatrutide 20 mg Research Peptide
+Canonical name: Retatrutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03396
+SKU display name: Retatrutide 20 mg Research Peptide
+Strength: 20
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+32 / 83 — Semaglutide 5 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 3397
+Original website SKU (reference only): OP-MET-SEMA-5MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Semaglutide 5 mg Research Peptide
+Canonical name: Semaglutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03397
+SKU display name: Semaglutide 5 mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+33 / 83 — BPC-157 5 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 3398
+Original website SKU (reference only): OP-REC-BPC157-5MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: BPC-157 5 mg Research Peptide
+Canonical name: BPC-157
+Product family: Regenerative Biology Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03398
+SKU display name: BPC-157 5 mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+34 / 83 — CJC-1295 No DAC 5 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 3619
+Original website SKU (reference only): OP-GH-CJC1295-NODAC-5MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: CJC-1295 No DAC 5 mg Research Peptide
+Canonical name: CJC-1295 No DAC
+Product family: Growth Hormone Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03619
+SKU display name: CJC-1295 No DAC 5 mg Research Peptide
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+35 / 83 — Tirzepatide 20 mg Research Peptide
+Group: INDIVIDUAL RESEARCH MATERIALS | Website product ID: 3620
+Original website SKU (reference only): OP-MET-TIRZ-20MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Tirzepatide 20 mg Research Peptide
+Canonical name: Tirzepatide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03620
+SKU display name: Tirzepatide 20 mg Research Peptide
+Strength: 20
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+36 / 83 — BPC-157 10 mg + TB-500 10 mg Research Blend
+Group: RESEARCH BLENDS | Website product ID: 55
+Original website SKU (reference only): OP-REC-BPCTB-20MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: BPC-157 10 mg + TB-500 10 mg Research Blend
+Canonical name: BPC-157 + TB-500
+Product family: Regenerative Biology Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00055
+SKU display name: BPC-157 10 mg + TB-500 10 mg Research Blend
+Strength: 20
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is total blend mass per vial; component amounts are preserved in the product name.
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+37 / 83 — Semaglutide 5 mg + Cagrilintide 5 mg Research Blend
+Group: RESEARCH BLENDS | Website product ID: 1942
+Original website SKU (reference only): OP-MET-SEMACAGRI-10MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: Semaglutide 5 mg + Cagrilintide 5 mg Research Blend
+Canonical name: Semaglutide + Cagrilintide
+Product family: Metabolic Systems Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01942
+SKU display name: Semaglutide 5 mg + Cagrilintide 5 mg Research Blend
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is total blend mass per vial; component amounts are preserved in the product name.
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+38 / 83 — Retatrutide + Cagrilintide Blend Research Peptide
+Group: RESEARCH BLENDS | Website product ID: 1943
+Original website SKU (reference only): OPL-BLEND-RETA-CAGRI
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Retatrutide + Cagrilintide Blend Research Peptide
+Canonical name: Retatrutide + Cagrilintide
+Product family: Metabolic Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01943
+SKU display name: Retatrutide + Cagrilintide Blend Research Peptide
+Strength: [LEAVE BLANK — not specified in export]
+Strength unit: [SELECT mg after verifying strength]
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+39 / 83 — BPC-157 + KPV Blend Research Peptide
+Group: RESEARCH BLENDS | Website product ID: 1945
+Original website SKU (reference only): OPL-BLEND-BPC-KPV
+Website stock flag: In stock (not OID inventory)
+
+Product name: BPC-157 + KPV Blend Research Peptide
+Canonical name: BPC-157 + KPV
+Product family: Immune Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01945
+SKU display name: BPC-157 + KPV Blend Research Peptide
+Strength: [LEAVE BLANK — not specified in export]
+Strength unit: [SELECT mg after verifying strength]
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+40 / 83 — MOTS-c + SS-31 Blend Research Peptide
+Group: RESEARCH BLENDS | Website product ID: 1946
+Original website SKU (reference only): OPL-BLEND-MOTSC-SS31
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: MOTS-c + SS-31 Blend Research Peptide
+Canonical name: MOTS-c + SS-31
+Product family: Longevity Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01946
+SKU display name: MOTS-c + SS-31 Blend Research Peptide
+Strength: [LEAVE BLANK — not specified in export]
+Strength unit: [SELECT mg after verifying strength]
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+41 / 83 — Epitalon + Pinealon Blend Research Peptide
+Group: RESEARCH BLENDS | Website product ID: 1947
+Original website SKU (reference only): OPL-BLEND-EPIT-PIN
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Epitalon + Pinealon Blend Research Peptide
+Canonical name: Epitalon + Pinealon
+Product family: Longevity Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01947
+SKU display name: Epitalon + Pinealon Blend Research Peptide
+Strength: [LEAVE BLANK — not specified in export]
+Strength unit: [SELECT mg after verifying strength]
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+42 / 83 — KLOW Research Blend 80 mg
+Group: RESEARCH BLENDS | Website product ID: 1948
+Original website SKU (reference only): OP-REC-KLOW-80MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: KLOW Research Blend 80 mg
+Canonical name: KLOW
+Product family: Regenerative Biology Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01948
+SKU display name: KLOW Research Blend 80 mg
+Strength: 80
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+The export does not identify this named blend’s component composition. Canonical name is a catalog label only.
+
+========================================================================
+43 / 83 — GLP-2TZ Blend Research Peptide
+Group: RESEARCH BLENDS | Website product ID: 1949
+Original website SKU (reference only): OPL-BLEND-GLP2TZ
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: GLP-2TZ Blend Research Peptide
+Canonical name: GLP-2TZ
+Product family: Metabolic Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01949
+SKU display name: GLP-2TZ Blend Research Peptide
+Strength: [LEAVE BLANK — not specified in export]
+Strength unit: [SELECT mg after verifying strength]
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+The export does not identify this named blend’s component composition. Canonical name is a catalog label only.
+
+========================================================================
+44 / 83 — GLP-3RT Blend Research Peptide
+Group: RESEARCH BLENDS | Website product ID: 1950
+Original website SKU (reference only): OPL-BLEND-GLP3RT
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: GLP-3RT Blend Research Peptide
+Canonical name: GLP-3RT
+Product family: Metabolic Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-01950
+SKU display name: GLP-3RT Blend Research Peptide
+Strength: [LEAVE BLANK — not specified in export]
+Strength unit: [SELECT mg after verifying strength]
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+The export does not identify this named blend’s component composition. Canonical name is a catalog label only.
+
+========================================================================
+45 / 83 — KPV 10 mg + GHK-Cu 50 mg Research Blend
+Group: RESEARCH BLENDS | Website product ID: 3621
+Original website SKU (reference only): OP-REC-KPVGHK-60MG
+Website stock flag: In stock (not OID inventory)
+
+Product name: KPV 10 mg + GHK-Cu 50 mg Research Blend
+Canonical name: KPV + GHK-Cu
+Product family: Regenerative Biology Research
+Research classification: Research peptide blend
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03621
+SKU display name: KPV 10 mg + GHK-Cu 50 mg Research Blend
+Strength: 60
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is total blend mass per vial; component amounts are preserved in the product name.
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+46 / 83 — Bacteriostatic Water 10 mL Research Support
+Group: RESEARCH SUPPORT | Website product ID: 816
+Original website SKU (reference only): OP-AUX-BACWATER-10ML
+Website stock flag: In stock (not OID inventory)
+
+Product name: Bacteriostatic Water 10 mL Research Support
+Canonical name: Bacteriostatic Water
+Product family: Research Support
+Research classification: Research support
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00816
+SKU display name: Bacteriostatic Water 10 mL Research Support
+Strength: [LEAVE BLANK — 10 mL is fill volume]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: 1
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Proposed package convention: 1 vial. Confirm against the product specification.
+
+========================================================================
+47 / 83 — Tirzepatide 10 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3454
+Original website SKU (reference only): OP-KIT-TIRZ-10MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: Tirzepatide 10 mg - 6 Vial Research Kit
+Canonical name: Tirzepatide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03454
+SKU display name: Tirzepatide 10 mg - 6 Vial Research Kit
+Strength: 10
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+48 / 83 — Semaglutide 5 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3457
+Original website SKU (reference only): OP-KIT-SEMA-5MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: Semaglutide 5 mg - 6 Vial Research Kit
+Canonical name: Semaglutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03457
+SKU display name: Semaglutide 5 mg - 6 Vial Research Kit
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+49 / 83 — NAD+ 500 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3459
+Original website SKU (reference only): OP-KIT-NAD-500MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: NAD+ 500 mg - 6 Vial Research Kit
+Canonical name: NAD+
+Product family: Cellular Energy Research
+Research classification: Research material
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03459
+SKU display name: NAD+ 500 mg - 6 Vial Research Kit
+Strength: 500
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+50 / 83 — Selank 5 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3463
+Original website SKU (reference only): OP-KIT-SELANK-5MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: Selank 5 mg - 6 Vial Research Kit
+Canonical name: Selank
+Product family: Cognitive Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03463
+SKU display name: Selank 5 mg - 6 Vial Research Kit
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+51 / 83 — Retatrutide 5 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3465
+Original website SKU (reference only): OP-KIT-RETA-5MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: Retatrutide 5 mg - 6 Vial Research Kit
+Canonical name: Retatrutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03465
+SKU display name: Retatrutide 5 mg - 6 Vial Research Kit
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+52 / 83 — GHK-Cu 50 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3468
+Original website SKU (reference only): OP-KIT-GHKCU-50MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: GHK-Cu 50 mg - 6 Vial Research Kit
+Canonical name: GHK-Cu
+Product family: Regenerative Biology Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03468
+SKU display name: GHK-Cu 50 mg - 6 Vial Research Kit
+Strength: 50
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+53 / 83 — Retatrutide 20 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3470
+Original website SKU (reference only): OP-KIT-RETA-20MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: Retatrutide 20 mg - 6 Vial Research Kit
+Canonical name: Retatrutide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03470
+SKU display name: Retatrutide 20 mg - 6 Vial Research Kit
+Strength: 20
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+54 / 83 — Cagrilintide 5 mg - 6 Vial Research Kit
+Group: SIX-VIAL KITS | Website product ID: 3472
+Original website SKU (reference only): OP-KIT-CAGRI-5MG-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: Cagrilintide 5 mg - 6 Vial Research Kit
+Canonical name: Cagrilintide
+Product family: Metabolic Systems Research
+Research classification: Research peptide
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03472
+SKU display name: Cagrilintide 5 mg - 6 Vial Research Kit
+Strength: 5
+Strength unit: mg
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Strength is per vial; package quantity is 6 vials, not 6 kits.
+
+========================================================================
+55 / 83 — Build Your Research Bundle - 3 Vials
+Group: CUSTOM BUNDLES | Website product ID: 3447
+Original website SKU (reference only): OP-BUNDLE-3
+Website stock flag: In stock (not OID inventory)
+
+Product name: Build Your Research Bundle - 3 Vials
+Canonical name: Build Your Research Bundle - 3 Vials
+Product family: Research Bundles
+Research classification: Research bundle
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03447
+SKU display name: Build Your Research Bundle - 3 Vials
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: 3
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Configurable bundle; no single fixed strength. Physical forms depend on selected components.
+
+========================================================================
+56 / 83 — Build Your Research Bundle - 6 Vials
+Group: CUSTOM BUNDLES | Website product ID: 3450
+Original website SKU (reference only): OP-BUNDLE-6
+Website stock flag: In stock (not OID inventory)
+
+Product name: Build Your Research Bundle - 6 Vials
+Canonical name: Build Your Research Bundle - 6 Vials
+Product family: Research Bundles
+Research classification: Research bundle
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03450
+SKU display name: Build Your Research Bundle - 6 Vials
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: 6
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Configurable bundle; no single fixed strength. Physical forms depend on selected components.
+
+========================================================================
+57 / 83 — Build Your Research Bundle - 9 Vials
+Group: CUSTOM BUNDLES | Website product ID: 3452
+Original website SKU (reference only): OP-BUNDLE-9
+Website stock flag: In stock (not OID inventory)
+
+Product name: Build Your Research Bundle - 9 Vials
+Canonical name: Build Your Research Bundle - 9 Vials
+Product family: Research Bundles
+Research classification: Research bundle
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03452
+SKU display name: Build Your Research Bundle - 9 Vials
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: 9
+Package unit: vial
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Configurable bundle; no single fixed strength. Physical forms depend on selected components.
+
+========================================================================
+58 / 83 — Advanced Multi-Pathway Research Collection
+Group: COLLECTIONS AND PANELS | Website product ID: 70
+Original website SKU (reference only): OP-STK-ADVANCED-MULTIPATHWAY
+Website stock flag: In stock (not OID inventory)
+
+Product name: Advanced Multi-Pathway Research Collection
+Canonical name: Advanced Multi-Pathway Research Collection
+Product family: Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00070
+SKU display name: Advanced Multi-Pathway Research Collection
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+59 / 83 — Longevity Research Collection
+Group: COLLECTIONS AND PANELS | Website product ID: 468
+Original website SKU (reference only): OP-STK-LONGEVITY
+Website stock flag: In stock (not OID inventory)
+
+Product name: Longevity Research Collection
+Canonical name: Longevity Research Collection
+Product family: Cellular Energy Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00468
+SKU display name: Longevity Research Collection
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+60 / 83 — Neurobiology Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 469
+Original website SKU (reference only): OP-STK-COGNITIVE
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Neurobiology Research Panel
+Canonical name: Neurobiology Research Panel
+Product family: Cognitive Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00469
+SKU display name: Neurobiology Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+61 / 83 — Growth-Hormone Axis Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 470
+Original website SKU (reference only): OP-STK-GHAXIS
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Growth-Hormone Axis Research Panel
+Canonical name: Growth-Hormone Axis Research Panel
+Product family: Growth Hormone Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00470
+SKU display name: Growth-Hormone Axis Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+62 / 83 — Longevity & Cellular Research Stack 2026
+Group: COLLECTIONS AND PANELS | Website product ID: 471
+Original website SKU (reference only): OP-STK-ANTIAGING-REPAIR
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Longevity & Cellular Research Stack 2026
+Canonical name: Longevity & Cellular Research Stack 2026
+Product family: Longevity Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00471
+SKU display name: Longevity & Cellular Research Stack 2026
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+63 / 83 — Immune Optimization Research Stack
+Group: COLLECTIONS AND PANELS | Website product ID: 472
+Original website SKU (reference only): OP-STK-IMMUNE
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Immune Optimization Research Stack
+Canonical name: Immune Optimization Research Stack
+Product family: Immune Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00472
+SKU display name: Immune Optimization Research Stack
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+64 / 83 — Comparative Signaling Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 473
+Original website SKU (reference only): OP-STK-PERFORMANCE-RECOVERY
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Comparative Signaling Research Panel
+Canonical name: Comparative Signaling Research Panel
+Product family: Cellular Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00473
+SKU display name: Comparative Signaling Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+65 / 83 — Cellular Response Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 477
+Original website SKU (reference only): OP-STK-RECOVERY-CELLULAR
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Cellular Response Research Panel
+Canonical name: Cellular Response Research Panel
+Product family: Cellular Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00477
+SKU display name: Cellular Response Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+66 / 83 — Tissue Response Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 478
+Original website SKU (reference only): OP-STK-RECOVERY-SUPPORT
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Tissue Response Research Panel
+Canonical name: Tissue Response Research Panel
+Product family: Recovery Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00478
+SKU display name: Tissue Response Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+67 / 83 — Introductory Analytical Reference Set
+Group: COLLECTIONS AND PANELS | Website product ID: 479
+Original website SKU (reference only): OP-STK-STARTER
+Website stock flag: Out of stock (not OID inventory)
+
+Product name: Introductory Analytical Reference Set
+Canonical name: Introductory Analytical Reference Set
+Product family: Recovery Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-00479
+SKU display name: Introductory Analytical Reference Set
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+68 / 83 — Metabolic Research Comparative Panel I
+Group: COLLECTIONS AND PANELS | Website product ID: 3316
+Original website SKU (reference only): ORP-MET-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: Metabolic Research Comparative Panel I
+Canonical name: Metabolic Research Comparative Panel I
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03316
+SKU display name: Metabolic Research Comparative Panel I
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+69 / 83 — Metabolic Research Comparative Panel II
+Group: COLLECTIONS AND PANELS | Website product ID: 3317
+Original website SKU (reference only): ORP-MET-002
+Website stock flag: In stock (not OID inventory)
+
+Product name: Metabolic Research Comparative Panel II
+Canonical name: Metabolic Research Comparative Panel II
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03317
+SKU display name: Metabolic Research Comparative Panel II
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+70 / 83 — Triple Incretin Comparative Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 3318
+Original website SKU (reference only): ORP-MET-003
+Website stock flag: In stock (not OID inventory)
+
+Product name: Triple Incretin Comparative Panel
+Canonical name: Triple Incretin Comparative Panel
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03318
+SKU display name: Triple Incretin Comparative Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+71 / 83 — Retatrutide Concentration Reference Set
+Group: COLLECTIONS AND PANELS | Website product ID: 3319
+Original website SKU (reference only): ORP-RET-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: Retatrutide Concentration Reference Set
+Canonical name: Retatrutide Concentration Reference Set
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03319
+SKU display name: Retatrutide Concentration Reference Set
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+72 / 83 — Tirzepatide Concentration Reference Set
+Group: COLLECTIONS AND PANELS | Website product ID: 3320
+Original website SKU (reference only): ORP-TIR-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: Tirzepatide Concentration Reference Set
+Canonical name: Tirzepatide Concentration Reference Set
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03320
+SKU display name: Tirzepatide Concentration Reference Set
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+73 / 83 — Semaglutide Concentration Reference Set
+Group: COLLECTIONS AND PANELS | Website product ID: 3321
+Original website SKU (reference only): ORP-SEM-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: Semaglutide Concentration Reference Set
+Canonical name: Semaglutide Concentration Reference Set
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03321
+SKU display name: Semaglutide Concentration Reference Set
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+74 / 83 — Metabolic Signaling Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 3322
+Original website SKU (reference only): ORP-MSR-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: Metabolic Signaling Research Panel
+Canonical name: Metabolic Signaling Research Panel
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03322
+SKU display name: Metabolic Signaling Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+75 / 83 — Cellular Biology Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 3323
+Original website SKU (reference only): ORP-CELL-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: Cellular Biology Research Panel
+Canonical name: Cellular Biology Research Panel
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03323
+SKU display name: Cellular Biology Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+76 / 83 — Cellular Bioenergetics Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 3324
+Original website SKU (reference only): ORP-CELL-002
+Website stock flag: In stock (not OID inventory)
+
+Product name: Cellular Bioenergetics Research Panel
+Canonical name: Cellular Bioenergetics Research Panel
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03324
+SKU display name: Cellular Bioenergetics Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+77 / 83 — Neurobiology Research Panel
+Group: COLLECTIONS AND PANELS | Website product ID: 3325
+Original website SKU (reference only): ORP-NEURO-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: Neurobiology Research Panel
+Canonical name: Neurobiology Research Panel
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03325
+SKU display name: Neurobiology Research Panel
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+78 / 83 — Cellular & Neurobiology Reference Set
+Group: COLLECTIONS AND PANELS | Website product ID: 3326
+Original website SKU (reference only): ORP-NEURO-002
+Website stock flag: In stock (not OID inventory)
+
+Product name: Cellular & Neurobiology Reference Set
+Canonical name: Cellular & Neurobiology Reference Set
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03326
+SKU display name: Cellular & Neurobiology Reference Set
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+79 / 83 — OligoPoly Discovery Collection
+Group: COLLECTIONS AND PANELS | Website product ID: 3327
+Original website SKU (reference only): ORP-DISC-001
+Website stock flag: In stock (not OID inventory)
+
+Product name: OligoPoly Discovery Collection
+Canonical name: OligoPoly Discovery Collection
+Product family: ORII Research Collections
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03327
+SKU display name: OligoPoly Discovery Collection
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+80 / 83 — Metabolic Pathways Research Collection
+Group: COLLECTIONS AND PANELS | Website product ID: 3474
+Original website SKU (reference only): OP-STACK-METABOLIC
+Website stock flag: In stock (not OID inventory)
+
+Product name: Metabolic Pathways Research Collection
+Canonical name: Metabolic Pathways Research Collection
+Product family: Metabolic Systems Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03474
+SKU display name: Metabolic Pathways Research Collection
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+81 / 83 — Cellular Energy Research Collection
+Group: COLLECTIONS AND PANELS | Website product ID: 3477
+Original website SKU (reference only): OP-STACK-CELLULAR
+Website stock flag: In stock (not OID inventory)
+
+Product name: Cellular Energy Research Collection
+Canonical name: Cellular Energy Research Collection
+Product family: Cellular Energy Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03477
+SKU display name: Cellular Energy Research Collection
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+82 / 83 — Neurocognitive Pathways Research Collection
+Group: COLLECTIONS AND PANELS | Website product ID: 3480
+Original website SKU (reference only): OP-STACK-NEURO
+Website stock flag: In stock (not OID inventory)
+
+Product name: Neurocognitive Pathways Research Collection
+Canonical name: Neurocognitive Pathways Research Collection
+Product family: Cognitive Systems Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03480
+SKU display name: Neurocognitive Pathways Research Collection
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+83 / 83 — Regenerative Biology Research Collection
+Group: COLLECTIONS AND PANELS | Website product ID: 3483
+Original website SKU (reference only): OP-STACK-REGEN
+Website stock flag: In stock (not OID inventory)
+
+Product name: Regenerative Biology Research Collection
+Canonical name: Regenerative Biology Research Collection
+Product family: Regenerative Biology Research
+Research classification: Research collection
+Product status: UNDER_REVIEW
+Internal SKU: OP-R-03483
+SKU display name: Regenerative Biology Research Collection
+Strength: [LEAVE BLANK — mixed or configurable contents]
+Strength unit: Not applicable
+Form: [SELECT verified form — absent from export]
+Package quantity: [CONFIRM — component count absent]
+Package unit: [SELECT verified package unit]
+Storage requirements: [LEAVE BLANK until verified — absent from export]
+
+ENTRY NOTES (do not paste into form):
+Components, their strengths, and package configuration are absent from this export. Do not invent a single-vial strength or count.
+
+========================================================================
+EXCLUDED RECORDS
+ID 67 | Metabolic Research Stack - Duplicate Record | ARCHIVE-DUPLICATE-67 | Archived duplicate
+ID 2313 | NAD+ | No SKU | Nutraceutical category
+ID 2314 | Magnesium Glycinate | No SKU | Nutraceutical category
+ID 2315 | Berberine HCl | No SKU | Nutraceutical category
+ID 2316 | Vitamin D3 + K2 | No SKU | Nutraceutical category
+ID 2317 | Multivitamin | No SKU | Nutraceutical category
+ID 2328 | Vitamin D3 + K2 5000 IU | ON-D3K2-5000 | Nutraceutical category
+ID 2329 | Complete Multivitamin | ON-MULTI-120 | Nutraceutical category
+ID 2330 | Vitamin C 1000mg | ON-VITC-1000 | Nutraceutical category
+ID 2331 | Omega-3 Fish Oil | ON-OM3-1000 | Nutraceutical category
+ID 2332 | B-Complex | ON-BCOM-60 | Nutraceutical category
+ID 2333 | Zinc Bisglycinate | ON-ZINC-30 | Nutraceutical category
+ID 2334 | CoQ10 Ubiquinol 200mg | ON-COQ10-200 | Nutraceutical category
+ID 2335 | Probiotics 50 Billion CFU | ON-PROB-50B | Nutraceutical category
+ID 2336 | Creatine Monohydrate | ON-CREAT-300 | Nutraceutical category
+ID 2337 | Melatonin 5mg | ON-MELA-5 | Nutraceutical category
+ID 2339 | Calcium + Magnesium Complex | ON-CALMAG-120 | Nutraceutical category
+ID 3394 | Tirzepatide 10 mg - Duplicate Record | ARCHIVE-DUPLICATE-3394 | Archived duplicate
+ID 3461 | Selank 5 mg - Duplicate Record | ARCHIVE-DUPLICATE-3461 | Archived duplicate
+ID 3556 | Retatrutide 5 mg - Duplicate Record | ARCHIVE-DUPLICATE-3556 | Archived duplicate
