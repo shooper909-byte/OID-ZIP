@@ -1,0 +1,22 @@
+-- Run as the managed PostgreSQL administrator after creating the two login roles.
+-- The migration role is supplied only to the one-shot migration job.
+-- The runtime role is supplied only to the application.
+
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON DATABASE oid FROM PUBLIC;
+
+GRANT CONNECT ON DATABASE oid TO oid_migration, oid_runtime;
+GRANT USAGE ON SCHEMA public TO oid_runtime;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO oid_runtime;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO oid_runtime;
+
+ALTER DEFAULT PRIVILEGES FOR ROLE oid_migration IN SCHEMA public
+  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO oid_runtime;
+ALTER DEFAULT PRIVILEGES FOR ROLE oid_migration IN SCHEMA public
+  GRANT USAGE, SELECT ON SEQUENCES TO oid_runtime;
+
+REVOKE CREATE ON SCHEMA public FROM oid_runtime;
+REVOKE ALL ON ALL FUNCTIONS IN SCHEMA public FROM PUBLIC;
+
+-- OID currently has no application-invoked database functions. Triggers execute
+-- under normal PostgreSQL trigger semantics; do not grant runtime DDL or owner rights.

@@ -1,0 +1,1069 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EvidenceState {
+  UNKNOWN
+  UNVERIFIED
+  OBSERVED
+  DOCUMENTED
+  INFERRED
+  PROVISIONAL
+  VERIFIED
+  CONFLICTING
+  SUPERSEDED
+}
+
+enum ReviewStatus {
+  NOT_REVIEWED
+  NEEDS_REVIEW
+  IN_REVIEW
+  REVIEWED
+  APPROVED
+  REJECTED
+  SUPERSEDED
+}
+
+enum ProductStatus {
+  DISCOVERY
+  RESEARCH
+  UNDER_REVIEW
+  DOCUMENTATION_INCOMPLETE
+  TESTING_REQUIRED
+  GATE_REVIEW
+  PROVISIONALLY_APPROVED
+  RELEASED
+  HOLD
+  BLOCKED
+  RETIRED
+}
+
+enum SupplierType {
+  MANUFACTURER
+  TRADING_COMPANY
+  DISTRIBUTOR
+  BROKER
+  UNKNOWN
+}
+
+enum SupplierQualificationStatus {
+  UNSCREENED
+  SCREENING
+  CONDITIONAL
+  QUALIFIED
+  PRODUCT_SPECIFIC_APPROVAL
+  HOLD
+  BLOCKED
+  RETIRED
+}
+
+enum LotStatus {
+  EXPECTED
+  RECEIVED
+  QUARANTINE
+  DOCUMENT_REVIEW
+  SAMPLING
+  TESTING
+  QUALITY_REVIEW
+  RELEASED
+  HOLD
+  REJECTED
+  RECALLED
+  DESTROYED
+}
+
+enum GateStatus {
+  NOT_STARTED
+  INCOMPLETE
+  IN_REVIEW
+  PASS
+  FAIL
+  BLOCKED
+  NOT_APPLICABLE
+}
+
+enum PurchaseOrderStatus {
+  DRAFT
+  AWAITING_DOCUMENTS
+  PENDING_APPROVAL
+  AUTHORIZED
+  PLACED
+  PARTIALLY_SHIPPED
+  SHIPPED
+  PARTIALLY_RECEIVED
+  RECEIVED
+  CANCELLED
+  HOLD
+  CLOSED
+}
+
+enum PaymentStatus {
+  NOT_DUE
+  PENDING
+  PARTIALLY_PAID
+  PAID
+  DISPUTED
+  REFUNDED
+  VOID
+}
+
+enum SampleStatus {
+  PLANNED
+  COLLECTED
+  SEALED
+  SHIPPED
+  RECEIVED_BY_LAB
+  TESTING
+  COMPLETE
+  VOID
+}
+
+enum LaboratoryStatus {
+  PROSPECTIVE
+  UNDER_REVIEW
+  ACTIVE
+  PREFERRED
+  HOLD
+  INACTIVE
+}
+
+enum TestOrderStatus {
+  PLANNED
+  QUOTE_REQUESTED
+  QUOTE_RECEIVED
+  AUTHORIZED
+  SAMPLE_SENT
+  RECEIVED_BY_LAB
+  TESTING
+  RESULT_RECEIVED
+  RESULT_REVIEW
+  COMPLETE
+  INVESTIGATION
+  VOID
+}
+
+enum TestResultStatus {
+  PASS
+  FAIL
+  INCONCLUSIVE
+  RETEST_REQUIRED
+  NOT_EVALUATED
+}
+
+enum DocumentType {
+  COA
+  CHROMATOGRAM
+  LAB_REPORT
+  INVOICE
+  PURCHASE_ORDER
+  PACKING_SLIP
+  SPECIFICATION
+  QUALITY_AGREEMENT
+  LAB_QUOTE
+  RECEIPT_PHOTO
+  SHIPPING_RECORD
+  CUSTOMER_DOCUMENT
+  COMPLAINT
+  CAPA
+  PROCEDURE
+  TRAINING_RECORD
+  LEGAL_REVIEW
+  CORRESPONDENCE
+  RESEARCH_SOURCE
+  MARKET_SOURCE
+  OTHER
+}
+
+enum DocumentVerification {
+  UNREVIEWED
+  MATCHED
+  PARTIAL_MATCH
+  MISMATCH
+  INVALID
+  SUPERSEDED
+}
+
+enum ExceptionSeverity {
+  INFO
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ExceptionStatus {
+  OPEN
+  ASSIGNED
+  INVESTIGATING
+  WAITING
+  MITIGATED
+  CLOSED
+  ACCEPTED_RISK
+  REOPENED
+}
+
+enum BlocksProcess {
+  NONE
+  PAYMENT
+  PURCHASE
+  RECEIPT
+  SAMPLING
+  TESTING
+  RELEASE
+  ALLOCATION
+  SHIPMENT
+  PUBLICATION
+  COMMERCIAL_LAUNCH
+  ALL
+}
+
+enum InventoryMovementType {
+  RECEIPT
+  SAMPLE
+  RELEASE
+  ALLOCATION
+  RETURN
+  DAMAGE
+  ADJUSTMENT
+  DESTRUCTION
+  RECALL
+  TRANSFER
+}
+
+enum AuditEventType {
+  CREATE
+  UPDATE
+  STATUS_CHANGE
+  CORRECTION
+  APPROVE
+  REJECT
+  RELEASE
+  RECALL
+  LOGIN
+  LOGOUT
+  FAILED_LOGIN
+  EXPORT
+  DOWNLOAD
+  SENSITIVE_VIEW
+  PERMISSION_CHANGE
+  ARCHIVE
+}
+
+enum EntityLinkType {
+  RELATED_TO
+  SUPPORTS
+  CONTRADICTS
+  DERIVED_FROM
+  SUPERSEDES
+  REQUIRES
+  BLOCKS
+  RESOLVES
+  ALLOCATED_TO
+  TESTED_BY
+  SUPPLIED_BY
+  DOCUMENTS
+  REFERENCES
+}
+
+
+model OidCounter {
+  id String @id @default(uuid()) @db.Uuid
+  entity String
+  year Int
+  currentValue Int @default(0)
+  updatedAt DateTime @updatedAt
+  @@unique([entity, year], name: "entity_year")
+}
+
+model User {
+  id String @id @default(uuid()) @db.Uuid
+  email String @unique
+  firstName String?
+  lastName String?
+  displayName String?
+  authProviderId String? @unique
+  status String @default("INVITED")
+  mfaEnabled Boolean @default(false)
+  lastLoginAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  roles UserRole[]
+  auditEvents AuditLog[]
+  authSessions AuthSession[]
+}
+
+model AuthSession {
+  id String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid
+  tokenHash String @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+  lastSeenAt DateTime?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, revokedAt, expiresAt])
+}
+
+model Role {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+  description String?
+  users UserRole[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id String @id @default(uuid()) @db.Uuid
+  key String @unique
+  description String?
+  roles RolePermission[]
+}
+
+model UserRole {
+  userId String @db.Uuid
+  roleId String @db.Uuid
+  assignedAt DateTime @default(now())
+  assignedBy String? @db.Uuid
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  @@id([userId, roleId])
+}
+
+model RolePermission {
+  roleId String @db.Uuid
+  permissionId String @db.Uuid
+  role Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  @@id([roleId, permissionId])
+}
+
+model Product {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  name String
+  canonicalName String?
+  shortName String?
+  casNumber String?
+  molecularFormula String?
+  molecularWeight Decimal?
+  sequence String?
+  productFamily String?
+  researchClassification String?
+  descriptionInternal String?
+  status ProductStatus @default(DISCOVERY)
+  evidenceState EvidenceState @default(UNKNOWN)
+  strategicPriority Int?
+  ownerUserId String? @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  archivedAt DateTime?
+  skus Sku[]
+  gates ProductGate[]
+  supplierProducts SupplierProduct[]
+  purchaseOrderItems PurchaseOrderItem[]
+  receiptItems ReceiptItem[]
+  lots Lot[]
+}
+
+model Sku {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  productId String @db.Uuid
+  internalSku String @unique
+  displayName String
+  strengthValue Decimal?
+  strengthUnit String?
+  form String?
+  packageQuantity Decimal?
+  packageUnit String?
+  storageRequirements String?
+  status String @default("ACTIVE")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product Product @relation(fields: [productId], references: [id])
+  lots Lot[]
+  supplierProducts SupplierProduct[]
+  purchaseOrderItems PurchaseOrderItem[]
+  receiptItems ReceiptItem[]
+}
+
+model ProductGate {
+  id String @id @default(uuid()) @db.Uuid
+  productId String @db.Uuid
+  gateType String
+  status GateStatus @default(NOT_STARTED)
+  requirementsJson Json?
+  evidenceSummary String?
+  reviewedBy String? @db.Uuid
+  reviewedAt DateTime?
+  approvedBy String? @db.Uuid
+  approvedAt DateTime?
+  blockedReason String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  @@unique([productId, gateType])
+}
+
+model Supplier {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  legalName String
+  tradeName String?
+  supplierType SupplierType @default(UNKNOWN)
+  country String?
+  addressLine1 String?
+  addressLine2 String?
+  city String?
+  region String?
+  postalCode String?
+  website String?
+  manufacturerStatus String?
+  legalIdentityStatus String?
+  ownershipStatus String?
+  paymentBeneficiaryName String?
+  qualificationStatus SupplierQualificationStatus @default(UNSCREENED)
+  riskLevel String?
+  lastReviewAt DateTime?
+  nextReviewAt DateTime?
+  ownerUserId String? @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  supplierProducts SupplierProduct[]
+  purchaseOrders PurchaseOrder[]
+  lots Lot[]
+}
+
+model SupplierProduct {
+  id String @id @default(uuid()) @db.Uuid
+  supplierId String @db.Uuid
+  productId String @db.Uuid
+  skuId String? @db.Uuid
+  supplierProductName String?
+  supplierCatalogReference String?
+  status String @default("ACTIVE")
+  minimumOrderQuantity Decimal?
+  leadTimeDays Int?
+  lastPrice Decimal?
+  currency String?
+  documentationStatus String?
+  qualificationStatus SupplierQualificationStatus @default(UNSCREENED)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sku Sku? @relation(fields: [skuId], references: [id])
+  @@unique([supplierId, productId, skuId])
+}
+
+model PurchaseOrder {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  supplierId String @db.Uuid
+  supplierReference String?
+  orderDate DateTime?
+  currency String @default("USD")
+  subtotal Decimal @default(0)
+  shippingCost Decimal @default(0)
+  fees Decimal @default(0)
+  totalCost Decimal @default(0)
+  paymentStatus PaymentStatus @default(NOT_DUE)
+  orderStatus PurchaseOrderStatus @default(DRAFT)
+  trackingNumber String?
+  carrier String?
+  expectedDeliveryDate DateTime?
+  actualDeliveryDate DateTime?
+  createdBy String? @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Restrict)
+  items PurchaseOrderItem[]
+  receipts Receipt[]
+  lots Lot[]
+}
+
+model PurchaseOrderItem {
+  id String @id @default(uuid()) @db.Uuid
+  purchaseOrderId String @db.Uuid
+  productId String @db.Uuid
+  skuId String? @db.Uuid
+  supplierProductName String?
+  quantity Decimal
+  unit String
+  unitCost Decimal @default(0)
+  totalCost Decimal @default(0)
+  expectedSupplierLot String?
+  createdAt DateTime @default(now())
+  purchaseOrder PurchaseOrder @relation(fields: [purchaseOrderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+  sku Sku? @relation(fields: [skuId], references: [id], onDelete: Restrict)
+  receiptItems ReceiptItem[]
+}
+
+model Receipt {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  purchaseOrderId String @db.Uuid
+  receivedAt DateTime
+  receivedBy String? @db.Uuid
+  carrier String?
+  trackingNumber String?
+  packageCondition String?
+  temperatureCondition String?
+  photographsComplete Boolean @default(false)
+  packingSlipPresent Boolean @default(false)
+  invoicePresent Boolean @default(false)
+  notes String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  purchaseOrder PurchaseOrder @relation(fields: [purchaseOrderId], references: [id], onDelete: Restrict)
+  items ReceiptItem[]
+  lots Lot[]
+}
+
+model ReceiptItem {
+  id String @id @default(uuid()) @db.Uuid
+  receiptId String @db.Uuid
+  purchaseOrderItemId String @db.Uuid
+  productId String @db.Uuid
+  skuId String? @db.Uuid
+  supplierLot String?
+  quantityReceived Decimal
+  unit String
+  labelPresent Boolean @default(false)
+  lotMarkingPresent Boolean @default(false)
+  coaReceived Boolean @default(false)
+  conditionStatus String?
+  createdAt DateTime @default(now())
+  receipt Receipt @relation(fields: [receiptId], references: [id], onDelete: Cascade)
+  purchaseOrderItem PurchaseOrderItem @relation(fields: [purchaseOrderItemId], references: [id], onDelete: Restrict)
+  product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+  sku Sku? @relation(fields: [skuId], references: [id], onDelete: Restrict)
+  lots Lot[]
+}
+
+model Lot {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  productId String @db.Uuid
+  skuId String? @db.Uuid
+  supplierId String @db.Uuid
+  purchaseOrderId String? @db.Uuid
+  receiptId String? @db.Uuid
+  receiptItemId String? @db.Uuid
+  supplierLot String
+  receivedQuantity Decimal @default(0)
+  quantityUnit String
+  status LotStatus @default(EXPECTED)
+  releaseGateStatus GateStatus @default(NOT_STARTED)
+  receivedAt DateTime?
+  releasedAt DateTime?
+  releasedBy String? @db.Uuid
+  rejectedAt DateTime?
+  rejectedBy String? @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product Product @relation(fields: [productId], references: [id])
+  sku Sku? @relation(fields: [skuId], references: [id])
+  supplier Supplier @relation(fields: [supplierId], references: [id])
+  purchaseOrder PurchaseOrder? @relation(fields: [purchaseOrderId], references: [id], onDelete: Restrict)
+  receipt Receipt? @relation(fields: [receiptId], references: [id], onDelete: Restrict)
+  receiptItem ReceiptItem? @relation(fields: [receiptItemId], references: [id], onDelete: Restrict)
+  samples Sample[]
+  testOrders TestOrder[]
+  testResults TestResult[]
+  exceptions Exception[]
+  inventoryMovements InventoryMovement[]
+  allocations Allocation[]
+  @@index([supplierId, supplierLot])
+}
+
+model Laboratory {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  name String
+  legalName String?
+  website String?
+  address String?
+  country String?
+  status LaboratoryStatus @default(PROSPECTIVE)
+  accreditationStatus String?
+  accreditationNumber String?
+  accreditationExpiry DateTime?
+  primaryContact String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  samples Sample[]
+  testOrders TestOrder[]
+}
+
+model Sample {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  lotId String @db.Uuid
+  laboratoryId String? @db.Uuid
+  sampleType String?
+  quantity Decimal
+  unit String
+  collectedAt DateTime?
+  collectedBy String? @db.Uuid
+  chainOfCustodyStatus String?
+  sealed Boolean @default(false)
+  shipmentTracking String?
+  labAccessionNumber String?
+  receivedByLabAt DateTime?
+  status SampleStatus @default(PLANNED)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  lot Lot @relation(fields: [lotId], references: [id], onDelete: Restrict)
+  laboratory Laboratory? @relation(fields: [laboratoryId], references: [id], onDelete: Restrict)
+  testOrders TestOrder[]
+  testResults TestResult[]
+  @@index([labAccessionNumber])
+}
+
+model TestOrder {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  sampleId String @db.Uuid
+  lotId String @db.Uuid
+  laboratoryId String @db.Uuid
+  isIndependent Boolean @default(false)
+  testType String
+  methodRequested String?
+  quoteReference String?
+  orderedAt DateTime?
+  expectedResultDate DateTime?
+  resultReceivedAt DateTime?
+  status TestOrderStatus @default(PLANNED)
+  cost Decimal?
+  currency String @default("USD")
+  invoiceReference String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sample Sample @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+  lot Lot @relation(fields: [lotId], references: [id], onDelete: Restrict)
+  laboratory Laboratory @relation(fields: [laboratoryId], references: [id], onDelete: Restrict)
+  results TestResult[]
+}
+
+model TestResult {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  testOrderId String @db.Uuid
+  sampleId String @db.Uuid
+  lotId String @db.Uuid
+  testType String
+  method String?
+  numericResult Decimal?
+  resultUnit String?
+  textResult String?
+  acceptanceCriteria String?
+  resultStatus TestResultStatus @default(NOT_EVALUATED)
+  testDate DateTime?
+  rawResultJson Json?
+  reviewStatus ReviewStatus @default(NOT_REVIEWED)
+  reviewedBy String? @db.Uuid
+  reviewedAt DateTime?
+  createdAt DateTime @default(now())
+  testOrder TestOrder @relation(fields: [testOrderId], references: [id], onDelete: Restrict)
+  sample Sample @relation(fields: [sampleId], references: [id], onDelete: Restrict)
+  lot Lot @relation(fields: [lotId], references: [id], onDelete: Restrict)
+}
+
+model Document {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  documentType DocumentType
+  title String
+  originalFilename String
+  storageKey String
+  mimeType String
+  fileSize Int?
+  sha256Hash String
+  issueDate DateTime?
+  receivedDate DateTime?
+  sourceType String?
+  sourceName String?
+  version Int @default(1)
+  status String @default("ACTIVE")
+  verificationStatus DocumentVerification @default(UNREVIEWED)
+  supersedesDocumentId String? @db.Uuid
+  uploadedBy String? @db.Uuid
+  uploadedAt DateTime @default(now())
+  verifiedBy String? @db.Uuid
+  verifiedAt DateTime?
+  supersedes Document? @relation("DocumentVersions", fields: [supersedesDocumentId], references: [id], onDelete: Restrict)
+  supersededBy Document[] @relation("DocumentVersions")
+  links DocumentLink[]
+  @@index([sha256Hash])
+}
+
+model DocumentLink {
+  id String @id @default(uuid()) @db.Uuid
+  documentId String @db.Uuid
+  entityType String
+  entityId String
+  relationshipType EntityLinkType @default(DOCUMENTS)
+  createdAt DateTime @default(now())
+  createdBy String? @db.Uuid
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  @@index([entityType, entityId])
+}
+
+model EntityLink {
+  id String @id @default(uuid()) @db.Uuid
+  sourceEntityType String
+  sourceEntityId String
+  relationshipType EntityLinkType
+  targetEntityType String
+  targetEntityId String
+  createdAt DateTime @default(now())
+  createdBy String? @db.Uuid
+  @@unique([sourceEntityType, sourceEntityId, relationshipType, targetEntityType, targetEntityId])
+  @@index([sourceEntityType, sourceEntityId])
+  @@index([targetEntityType, targetEntityId])
+}
+
+model InventoryMovement {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  lotId String @db.Uuid
+  movementType InventoryMovementType
+  quantityIn Decimal @default(0)
+  quantityOut Decimal @default(0)
+  unit String
+  referenceType String?
+  referenceId String?
+  reason String?
+  performedBy String? @db.Uuid
+  approvedBy String? @db.Uuid
+  occurredAt DateTime @default(now())
+  createdAt DateTime @default(now())
+  lot Lot @relation(fields: [lotId], references: [id], onDelete: Restrict)
+  @@index([lotId, occurredAt])
+}
+
+model Allocation {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  lotId String @db.Uuid
+  customerOrderRef String
+  customerOrderItemId String? @db.Uuid
+  quantity Decimal
+  unit String
+  allocationStatus String @default("ALLOCATED")
+  allocatedAt DateTime @default(now())
+  allocatedBy String? @db.Uuid
+  lot Lot @relation(fields: [lotId], references: [id], onDelete: Restrict)
+}
+
+model Exception {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  title String
+  description String
+  severity ExceptionSeverity
+  status ExceptionStatus @default(OPEN)
+  lotId String? @db.Uuid
+  entityType String?
+  entityId String?
+  blocksProcess BlocksProcess @default(NONE)
+  evidenceSummary String?
+  ownerUserId String? @db.Uuid
+  discoveredAt DateTime @default(now())
+  dueAt DateTime?
+  resolution String?
+  resolvedAt DateTime?
+  resolvedBy String? @db.Uuid
+  riskAcceptedBy String? @db.Uuid
+  riskAcceptedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  lot Lot? @relation(fields: [lotId], references: [id], onDelete: SetNull)
+}
+
+model AuditLog {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique
+  eventType AuditEventType
+  userId String? @db.Uuid
+  sessionId String?
+  entityType String
+  entityId String
+  previousValues Json?
+  newValues Json?
+  reason String?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  @@index([entityType, entityId, createdAt])
+}
+
+
+model Action {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique @map("oid_code")
+  title String
+  description String?
+  priority String @default("MEDIUM")
+  entityType String? @map("entity_type")
+  entityId String? @map("entity_id")
+  assignedTo String? @db.Uuid @map("assigned_to")
+  status String @default("OPEN")
+  dueAt DateTime? @map("due_at")
+  completedAt DateTime? @map("completed_at")
+  sourceReference String? @map("source_reference")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("actions")
+}
+
+model Capa {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique @map("oid_code")
+  exceptionId String? @db.Uuid @map("exception_id")
+  title String
+  containmentAction String? @map("containment_action")
+  rootCause String? @map("root_cause")
+  correctiveAction String? @map("corrective_action")
+  preventiveAction String? @map("preventive_action")
+  ownerId String? @db.Uuid @map("owner_id")
+  status String @default("OPEN")
+  dueAt DateTime? @map("due_at")
+  implementationDate DateTime? @map("implementation_date")
+  effectivenessReview String? @map("effectiveness_review")
+  effectivenessStatus String? @map("effectiveness_status")
+  closedAt DateTime? @map("closed_at")
+  closedBy String? @db.Uuid @map("closed_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("capas")
+}
+
+model Decision {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique @map("oid_code")
+  decisionType String @map("decision_type")
+  title String
+  question String?
+  context String?
+  optionsConsidered Json? @map("options_considered")
+  recommendation String?
+  finalDecision String? @map("final_decision")
+  conditions String?
+  decisionStatus String @default("DRAFT") @map("decision_status")
+  decisionMaker String? @db.Uuid @map("decision_maker")
+  decisionDate DateTime? @map("decision_date")
+  reviewDate DateTime? @map("review_date")
+  outcome String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("decisions")
+}
+
+model DecisionEvidence {
+  decisionId String @db.Uuid @map("decision_id")
+  entityType String @map("entity_type")
+  entityId String @map("entity_id")
+  relationship String
+  @@id([decisionId, entityType, entityId, relationship])
+  @@map("decision_evidence")
+}
+
+model Notification {
+  id String @id @default(uuid()) @db.Uuid
+  userId String? @db.Uuid @map("user_id")
+  eventType String @map("event_type")
+  entityType String? @map("entity_type")
+  entityId String? @map("entity_id")
+  title String
+  message String
+  severity String @default("INFO")
+  readAt DateTime? @map("read_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  @@map("notifications")
+}
+
+model Organization {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique @map("oid_code")
+  name String
+  legalName String? @map("legal_name")
+  organizationType String? @map("organization_type")
+  website String?
+  domain String?
+  businessAddress String? @map("business_address")
+  verificationStatus String @default("NOT_STARTED") @map("verification_status")
+  accountStatus String @default("PROSPECT") @map("account_status")
+  riskLevel String? @map("risk_level")
+  commerceCustomerId String? @map("commerce_customer_id")
+  accountOwner String? @db.Uuid @map("account_owner")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("organizations")
+}
+
+model CustomerOrder {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique @map("oid_code")
+  organizationId String @db.Uuid @map("organization_id")
+  commerceOrderId String? @unique @map("commerce_order_id")
+  orderDate DateTime? @map("order_date")
+  orderStatus String @default("OPEN") @map("order_status")
+  currency String @default("USD")
+  subtotal Decimal @default(0)
+  shipping Decimal @default(0)
+  total Decimal @default(0)
+  paymentStatus String @default("PENDING") @map("payment_status")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  @@map("customer_orders")
+}
+
+model CustomerOrderItem {
+  id String @id @default(uuid()) @db.Uuid
+  customerOrderId String @db.Uuid @map("customer_order_id")
+  productId String @db.Uuid @map("product_id")
+  skuId String? @db.Uuid @map("sku_id")
+  quantity Decimal
+  unit String
+  unitPrice Decimal @default(0) @map("unit_price")
+  totalPrice Decimal @default(0) @map("total_price")
+  @@map("customer_order_items")
+}
+
+model Competitor {
+  id String @id @default(uuid()) @db.Uuid
+  name String @unique
+  website String?
+  notes String?
+  createdAt DateTime @default(now()) @map("created_at")
+  @@map("competitors")
+}
+
+model MarketObservation {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique @map("oid_code")
+  productId String? @db.Uuid @map("product_id")
+  competitorId String? @db.Uuid @map("competitor_id")
+  observationType String @map("observation_type")
+  title String
+  observation String
+  sourceUrl String? @map("source_url")
+  sourceDocumentId String? @db.Uuid @map("source_document_id")
+  observedAt DateTime @map("observed_at")
+  evidenceState String @default("OBSERVED") @map("evidence_state")
+  confidence Decimal?
+  commercialRelevance String? @map("commercial_relevance")
+  createdBy String? @db.Uuid @map("created_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  @@map("market_observations")
+}
+
+model ResearchSource {
+  id String @id @default(uuid()) @db.Uuid
+  oidCode String @unique @map("oid_code")
+  title String
+  sourceType String? @map("source_type")
+  authors String?
+  publisher String?
+  publicationDate DateTime? @db.Date @map("publication_date")
+  doi String?
+  pmid String?
+  url String?
+  abstractText String? @map("abstract_text")
+  productId String? @db.Uuid @map("product_id")
+  evidenceQuality String? @map("evidence_quality")
+  reviewStatus String @default("NOT_REVIEWED") @map("review_status")
+  createdAt DateTime @default(now()) @map("created_at")
+  @@map("research_sources")
+}
+
+model IntelligenceQuery {
+  id String @id @default(uuid()) @db.Uuid
+  userId String? @db.Uuid @map("user_id")
+  question String
+  normalizedQuestion String? @map("normalized_question")
+  answer String?
+  confidence String?
+  evidence Json
+  conflictingEvidence Json @map("conflicting_evidence")
+  unknowns Json
+  requiredActions Json @map("required_actions")
+  createdAt DateTime @default(now()) @map("created_at")
+  @@map("intelligence_queries")
+}
+
+model ImportBatch {
+  id String @id @default(uuid()) @db.Uuid
+  name String
+  sourceName String @map("source_name")
+  sourceSha256 String? @unique @map("source_sha256")
+  status String @default("STAGED")
+  rowCount Int @default(0) @map("row_count")
+  validCount Int @default(0) @map("valid_count")
+  warningCount Int @default(0) @map("warning_count")
+  errorCount Int @default(0) @map("error_count")
+  startedAt DateTime? @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  createdBy String? @db.Uuid @map("created_by")
+  createdAt DateTime @default(now()) @map("created_at")
+  rows ImportRow[]
+  @@map("import_batches")
+}
+
+model ImportRow {
+  id String @id @default(uuid()) @db.Uuid
+  importBatchId String @db.Uuid @map("import_batch_id")
+  rowNumber Int @map("row_number")
+  rawData Json @map("raw_data")
+  normalizedData Json? @map("normalized_data")
+  validationStatus String @map("validation_status")
+  messages Json
+  proposedAction String @default("CREATE") @map("proposed_action")
+  committedEntityId String? @db.Uuid @map("committed_entity_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  batch ImportBatch @relation(fields: [importBatchId], references: [id], onDelete: Cascade)
+  @@unique([importBatchId, rowNumber])
+  @@index([importBatchId, validationStatus])
+  @@map("import_rows")
+}
+
+model MigrationConflict {
+  id String @id @default(uuid()) @db.Uuid
+  importBatchId String @db.Uuid @map("import_batch_id")
+  entityType String @map("entity_type")
+  legacyIdentifier String? @map("legacy_identifier")
+  conflictType String @map("conflict_type")
+  sourceValue Json? @map("source_value")
+  existingValue Json? @map("existing_value")
+  resolutionStatus String @default("OPEN") @map("resolution_status")
+  resolvedValue Json? @map("resolved_value")
+  resolvedBy String? @db.Uuid @map("resolved_by")
+  resolvedAt DateTime? @map("resolved_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  @@map("migration_conflicts")
+}
+
+model LegacyImportMap {
+  id String @id @default(uuid()) @db.Uuid
+  importBatchId String @db.Uuid @map("import_batch_id")
+  entityType String @map("entity_type")
+  legacySource String @map("legacy_source")
+  legacySheet String? @map("legacy_sheet")
+  legacyRow String? @map("legacy_row")
+  legacyIdentifier String? @map("legacy_identifier")
+  oidEntityId String? @map("oid_entity_id")
+  oidCode String? @map("oid_code")
+  importReviewStatus String @default("IMPORTED_UNREVIEWED") @map("import_review_status")
+  importedAt DateTime @default(now()) @map("imported_at")
+  @@unique([importBatchId, entityType, legacySource, legacySheet, legacyRow])
+  @@map("legacy_import_map")
+}

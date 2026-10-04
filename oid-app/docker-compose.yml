@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: oid
+      POSTGRES_USER: oid
+      POSTGRES_PASSWORD: ${OID_DB_PASSWORD:?Set OID_DB_PASSWORD in the deployment secret source}
+    volumes:
+      - oid_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oid -d oid"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    networks: [database]
+
+  oid-migrate:
+    build: .
+    command: ["npx", "prisma", "migrate", "deploy"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: ${OID_MIGRATION_DATABASE_URL:?Set the migration-role connection string}
+    networks: [database]
+    restart: "no"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+
+  oid:
+    build: .
+    depends_on:
+      oid-migrate:
+        condition: service_completed_successfully
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: ${OID_DATABASE_URL:?Set the least-privilege runtime connection string}
+      OID_IDENTITY_MODE: ${OID_IDENTITY_MODE:-internal-token}
+      OID_INTERNAL_ACCESS_TOKEN: ${OID_INTERNAL_ACCESS_TOKEN:-}
+      OID_INTERNAL_USER_ID: ${OID_INTERNAL_USER_ID:-}
+      OID_INTERNAL_USER_EMAIL: ${OID_INTERNAL_USER_EMAIL:-}
+      OID_ALLOWED_ORIGIN: ${OID_ALLOWED_ORIGIN:?Set the HTTPS application origin}
+      OID_STORAGE_ROOT: /var/lib/oid/private
+      OID_SESSION_HOURS: ${OID_SESSION_HOURS:-8}
+      OID_TRUSTED_PROXY_SECRET: ${OID_TRUSTED_PROXY_SECRET:-}
+      OID_IDENTITY_EMAIL_HEADER: ${OID_IDENTITY_EMAIL_HEADER:-x-oid-user-email}
+      OID_REQUIRE_MFA: ${OID_REQUIRE_MFA:-false}
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - oid_private:/var/lib/oid/private
+    networks: [application, database]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+
+volumes:
+  oid_pgdata:
+  oid_private:
+
+networks:
+  application:
+  database:
+    internal: true

@@ -1,0 +1,1 @@
+export default function Home(){return <section><div className="eyebrow">OligoPoly Intelligence Database</div><h1>Evidence connected. Decisions informed.</h1><p className="muted">OID is the controlled intelligence and traceability system for OligoPoly Laboratories.</p><p><a className="button primary" href="/command-center">Open Command Center</a></p></section>}

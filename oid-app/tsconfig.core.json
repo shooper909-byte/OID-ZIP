@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "outDir": ".tmp/oid-core-build"
+  },
+  "include": [
+    "lib/oid-identifiers/index.ts",
+    "lib/inventory/index.ts",
+    "lib/quality-gates/index.ts",
+    "lib/traceability/index.ts",
+    "lib/control/index.ts",
+    "lib/intelligence/index.ts",
+    "lib/migration/index.ts",
+    "tests/core/domain-validation.ts"
+  ]
+}
