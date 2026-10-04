@@ -1,0 +1,50 @@
+{
+  "name": "oligopoly-oid",
+  "version": "1.0.0",
+  "private": true,
+  "allowScripts": {
+    "@prisma/client@6.19.3": true,
+    "@prisma/engines@6.19.3": true,
+    "esbuild@0.28.1": true,
+    "prisma@6.19.3": true
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "security:secrets": "node scripts/check-secrets.mjs",
+    "security:container-config": "node scripts/check-container-hardening.mjs",
+    "security:azure-identity-bridge": "node scripts/test-azure-identity-bridge.mjs",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "tsx prisma/seed.ts",
+    "validate:core": "node -e \"require('fs').rmSync('.tmp/oid-core-build',{recursive:true,force:true})\" && tsc -p tsconfig.core.json && node .tmp/oid-core-build/tests/core/domain-validation.js",
+    "db:deploy": "prisma migrate deploy",
+    "db:validate": "prisma validate",
+    "db:seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.13.1",
+    "@azure/storage-blob": "^12.33.0",
+    "@prisma/client": "^6.13.0",
+    "next": "^16.3.0",
+    "prisma": "^6.13.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "deepmerge-ts": "8.0.0"
+  }
+}
