@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { forbidden, unauthorized } from "next/navigation";
 import { actorForServerRequest, type Actor } from "../auth";
+import { logSecurityEvent } from "../security/events";
 import { hasPermission, requirePermission, type PermissionKey } from "../permissions";
 
 export async function actorForPage(): Promise<Actor> {
@@ -21,6 +22,8 @@ export function classifyPageAccessError(error: unknown): PageAccessOutcome {
 
 export function interruptForPageAccess(error: unknown): never {
   const outcome = classifyPageAccessError(error);
+  // 401s are already logged with their reason code and reference by the auth layer.
+  if (outcome === "forbidden") logSecurityEvent({ event: "PAGE_ACCESS_DENIED", outcome: "DENY", reason: (error as Error).message });
   if (outcome === "unauthorized") unauthorized();
   if (outcome === "forbidden") forbidden();
   throw error;

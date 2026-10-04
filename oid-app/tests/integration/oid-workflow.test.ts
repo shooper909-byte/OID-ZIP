@@ -469,28 +469,39 @@ describe.sequential("OID PostgreSQL control workflow", { timeout: 60_000 }, () =
     process.env.OID_IDENTITY_EMAIL_HEADER = "x-oid-user-email";
     process.env.OID_REQUIRE_MFA = "true";
     process.env.OID_ALLOWED_ORIGIN = "https://oid.example.invalid";
+    const objectIds = new Map<string, string>();
+    const oidFor = (email: string) => { if (!objectIds.has(email)) objectIds.set(email, randomUUID()); return objectIds.get(email)!; };
     try {
       for (const email of [auditorEmail, aiEmail]) {
         const request = new Request(`https://oid.example.invalid/api/v1/lots/${lot.id}/release`, {
           method: "POST",
-          headers: { "content-type": "application/json", origin: "https://oid.example.invalid", "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-email": email, "x-oid-mfa": "true" },
+          headers: { "content-type": "application/json", origin: "https://oid.example.invalid", "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-oid": oidFor(email), "x-oid-user-email": email, "x-oid-mfa": "true" },
           body: JSON.stringify({ reason: "Unauthorized synthetic release attempt" }),
         });
         const response = await releaseRoute(request, { params: Promise.resolve({ id: lot.id }) });
         expect(response.status).toBe(403);
       }
       const disabledRequest = new Request("https://oid.example.invalid/api/v1/search?q=OID", {
-        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-email": disabledEmail, "x-oid-mfa": "true" },
+        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-oid": oidFor(disabledEmail), "x-oid-user-email": disabledEmail, "x-oid-mfa": "true" },
       });
-      await expect(actorForServerRequest(disabledRequest)).rejects.toThrow("UNAUTHORIZED:USER_INACTIVE_OR_UNKNOWN");
+      await expect(actorForServerRequest(disabledRequest)).rejects.toThrow("UNAUTHORIZED:LOCAL_USER_DISABLED");
       const missingMfaRequest = new Request("https://oid.example.invalid/api/v1/search?q=OID", {
-        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-email": auditorEmail },
+        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-oid": oidFor(auditorEmail), "x-oid-user-email": auditorEmail },
       });
-      await expect(actorForServerRequest(missingMfaRequest)).rejects.toThrow("UNAUTHORIZED:MFA_REQUIRED");
+      await expect(actorForServerRequest(missingMfaRequest)).rejects.toThrow("UNAUTHORIZED:MFA_CLAIM_MISSING");
       const unknownUserRequest = new Request("https://oid.example.invalid/api/v1/search?q=OID", {
-        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-email": `unknown-${runId}@example.invalid`, "x-oid-mfa": "true" },
+        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-oid": randomUUID(), "x-oid-user-email": `unknown-${runId}@example.invalid`, "x-oid-mfa": "true" },
       });
-      await expect(actorForServerRequest(unknownUserRequest)).rejects.toThrow("UNAUTHORIZED:USER_INACTIVE_OR_UNKNOWN");
+      await expect(actorForServerRequest(unknownUserRequest)).rejects.toThrow("UNAUTHORIZED:LOCAL_USER_MISSING");
+      const noObjectIdRequest = new Request("https://oid.example.invalid/api/v1/search?q=OID", {
+        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-email": auditorEmail, "x-oid-mfa": "true" },
+      });
+      await expect(actorForServerRequest(noObjectIdRequest)).rejects.toThrow("UNAUTHORIZED:NO_PRINCIPAL");
+      // Once linked by object ID, a changed email claim no longer matters.
+      const linkedRequest = new Request("https://oid.example.invalid/api/v1/search?q=OID", {
+        headers: { "x-oid-proxy-secret": process.env.OID_TRUSTED_PROXY_SECRET, "x-oid-user-oid": oidFor(auditorEmail), "x-oid-user-email": `renamed-${runId}@example.invalid`, "x-oid-mfa": "true" },
+      });
+      expect((await actorForServerRequest(linkedRequest)).email).toBe(auditorEmail);
     } finally {
       for (const [key, value] of Object.entries(previous)) value === undefined ? delete process.env[key] : process.env[key] = value;
     }

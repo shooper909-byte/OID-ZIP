@@ -57,6 +57,11 @@ export function validateProductionEnvironment(env = process.env): string[] {
     if ((env.OID_TRUSTED_PROXY_SECRET?.length ?? 0) < 32) errors.push("OID_TRUSTED_PROXY_SECRET_TOO_SHORT");
     if (!env.OID_IDENTITY_EMAIL_HEADER?.trim()) errors.push("MISSING_ENV:OID_IDENTITY_EMAIL_HEADER");
     if (env.OID_REQUIRE_MFA !== "true") errors.push("OID_REQUIRE_MFA_MUST_BE_TRUE");
+    const guid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (env.OID_ALLOWED_TENANT_ID && !guid.test(env.OID_ALLOWED_TENANT_ID.trim())) errors.push("OID_ALLOWED_TENANT_ID_INVALID");
+    if (env.OID_OWNER_BOOTSTRAP_OBJECT_IDS && !env.OID_OWNER_BOOTSTRAP_OBJECT_IDS.split(",").every((id) => guid.test(id.trim()))) errors.push("OID_OWNER_BOOTSTRAP_OBJECT_IDS_INVALID");
+    if (env.OID_OWNER_BOOTSTRAP_GROUP_ID && !guid.test(env.OID_OWNER_BOOTSTRAP_GROUP_ID.trim())) errors.push("OID_OWNER_BOOTSTRAP_GROUP_ID_INVALID");
+    if (env.OID_OWNER_BOOTSTRAP_OBJECT_IDS && !env.OID_ALLOWED_TENANT_ID) errors.push("OID_OWNER_BOOTSTRAP_REQUIRES_OID_ALLOWED_TENANT_ID");
   }
 
   if (env.OID_ALLOWED_ORIGIN) {

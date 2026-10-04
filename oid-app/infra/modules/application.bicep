@@ -21,6 +21,7 @@ param oidTrustedProxySecret string
 param entraTenantId string
 param entraClientId string
 param entraAllowedGroupObjectIds array
+param ownerBootstrapObjectIds array = []
 param pilotHostname string
 param applicationImage string
 param migrationImage string
@@ -194,6 +195,7 @@ resource containerApp 'Microsoft.App/containerApps@2025-01-01' = {
           args: ['scripts/azure-identity-bridge.mjs']
           env: [
             { name: 'OID_ALLOWED_TENANT_ID', value: entraTenantId }
+            { name: 'OID_ALLOWED_AUDIENCES', value: '${entraClientId},api://${entraClientId}' }
             { name: 'OID_TRUSTED_PROXY_SECRET', secretRef: 'proxy-secret' }
             { name: 'OID_BRIDGE_LISTEN_PORT', value: '8080' }
             { name: 'OID_BRIDGE_TARGET_PORT', value: '3000' }
@@ -222,6 +224,10 @@ resource containerApp 'Microsoft.App/containerApps@2025-01-01' = {
             { name: 'OID_TRUSTED_PROXY_SECRET', secretRef: 'proxy-secret' }
             { name: 'OID_IDENTITY_EMAIL_HEADER', value: 'x-oid-user-email' }
             { name: 'OID_REQUIRE_MFA', value: 'true' }
+            { name: 'OID_ALLOWED_TENANT_ID', value: entraTenantId }
+            { name: 'OID_OWNER_BOOTSTRAP_OBJECT_IDS', value: join(ownerBootstrapObjectIds, ',') }
+            { name: 'OID_OWNER_BOOTSTRAP_GROUP_ID', value: length(entraAllowedGroupObjectIds) > 0 ? entraAllowedGroupObjectIds[0] : '' }
+            { name: 'OID_OWNER_BOOTSTRAP_ROLE', value: 'FOUNDER' }
             { name: 'OID_DATA_MODE', value: oidDataMode }
             { name: 'OID_ALLOWED_ORIGIN', value: allowedOrigin }
             { name: 'OID_STORAGE_BACKEND', value: 'azure-blob' }

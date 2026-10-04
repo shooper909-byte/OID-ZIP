@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import type { Actor } from "../../lib/auth";
 import { actorCanReadAll } from "../../lib/auth/page-actor";
 import { PERMISSIONS, type PermissionKey } from "../../lib/permissions";
+import { identityMode } from "../../lib/config/env";
+import { ENTRA_SIGN_OUT_PATH } from "./AccessDenied";
 
 export const commandCenterPermissions = [PERMISSIONS.LOT_READ, PERMISSIONS.TEST_READ, PERMISSIONS.EXCEPTION_READ, PERMISSIONS.PURCHASE_ORDER_READ, PERMISSIONS.RECEIPT_READ, PERMISSIONS.ACTION_READ, PERMISSIONS.DECISION_READ, PERMISSIONS.ORGANIZATION_READ] as const;
 const nav: [string, string, readonly PermissionKey[]][] = [
@@ -18,5 +20,5 @@ const nav: [string, string, readonly PermissionKey[]][] = [
 
 export function AuthorizedShell({ actor, children }: { actor: Actor; children: ReactNode }) {
   const visibleNav = nav.filter(([, , permissions]) => actorCanReadAll(actor, permissions));
-  return <div className="shell"><aside className="sidebar"><div className="brand">OLIGOPOLY LABORATORIES<strong>OID</strong><span>Controlled product staging</span></div><nav className="nav" aria-label="OID sections">{visibleNav.map(([href, label]) => <a key={href} href={href}>{label}</a>)}</nav></aside><main className="content">{children}</main></div>;
+  return <div className="shell"><aside className="sidebar"><div className="brand">OLIGOPOLY LABORATORIES<strong>OID</strong><span>Controlled product staging</span></div><nav className="nav" aria-label="OID sections">{visibleNav.map(([href, label]) => <a key={href} href={href}>{label}</a>)}</nav>{identityMode() === "trusted-proxy" ? <div className="nav-footer"><span className="muted">{actor.email}</span> <a href={ENTRA_SIGN_OUT_PATH}>Sign out</a></div> : null}</aside><main className="content">{children}</main></div>;
 }

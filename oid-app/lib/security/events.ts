@@ -6,6 +6,8 @@ export type SecurityEvent = {
   reason?: string;
   entityType?: string;
   entityId?: string;
+  /** Opaque support reference shown to the user (OID-AUTH-<status>-<ref>); correlates browser reports with this log line. */
+  reference?: string;
 };
 
 export function logSecurityEvent(event: SecurityEvent): void {

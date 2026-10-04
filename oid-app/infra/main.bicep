@@ -36,6 +36,8 @@ param entraTenantId string
 param entraClientId string
 param entraAllowedGroupObjectIds array
 param administratorObjectIds array
+@description('Entra object IDs approved to have a missing OID user created with the owner role on first verified sign-in. Identifiers only; never secrets.')
+param ownerBootstrapObjectIds array = []
 
 var applicationIdentityReady = entraClientId != '00000000-0000-0000-0000-000000000000' && length(entraAllowedGroupObjectIds) > 0
 var applicationImagesReady = contains(applicationImage, '@sha256:') && contains(migrationImage, '@sha256:') && !startsWith(applicationImage, 'invalid.invalid/') && !startsWith(migrationImage, 'invalid.invalid/')
@@ -147,6 +149,7 @@ module application 'modules/application.bicep' = if (deployApplication) {
     entraTenantId: entraTenantId
     entraClientId: entraClientId
     entraAllowedGroupObjectIds: entraAllowedGroupObjectIds
+    ownerBootstrapObjectIds: ownerBootstrapObjectIds
     pilotHostname: pilotHostname
     applicationImage: applicationImage
     migrationImage: migrationImage

@@ -14,12 +14,17 @@ function close(server) {
   return new Promise((resolve) => server.close(resolve));
 }
 
-function encodedPrincipal({ tenant = "00000000-0000-0000-0000-000000000123", email = "quality@example.invalid", mfa = true } = {}) {
-  const claims = [
-    { typ: "tid", val: tenant },
-    { typ: "preferred_username", val: email },
-  ];
-  if (mfa) claims.push({ typ: "amr", val: "pwd mfa" });
+const OBJECT_ID = "bab63204-7cb9-465d-a074-56124afeaa98";
+const CLIENT_ID = "3374f580-d9d4-4d42-8e44-cbcc95fa6317";
+const GROUP_ID = "da7ae7e7-0bb3-4bdf-a411-75726b97b418";
+
+function encodedPrincipal({ tenant = "00000000-0000-0000-0000-000000000123", email = "quality@example.invalid", mfa = true, objectId = OBJECT_ID, audience = CLIENT_ID, groups = [GROUP_ID], guestUpnFirst = false } = {}) {
+  const claims = [{ typ: "aud", val: audience }, { typ: "http://schemas.microsoft.com/identity/claims/tenantid", val: tenant }];
+  if (objectId) claims.push({ typ: "http://schemas.microsoft.com/identity/claims/objectidentifier", val: objectId });
+  if (guestUpnFirst) claims.push({ typ: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn", val: "labs_oligopolypeptides.com#EXT#@labsoligopolypeptides.onmicrosoft.com" });
+  claims.push({ typ: "preferred_username", val: email });
+  for (const group of groups) claims.push({ typ: "groups", val: group });
+  if (mfa) claims.push({ typ: "http://schemas.microsoft.com/claims/authnmethodsreferences", val: "pwd" }, { typ: "http://schemas.microsoft.com/claims/authnmethodsreferences", val: "mfa" });
   return Buffer.from(JSON.stringify({ claims }), "utf8").toString("base64");
 }
 
@@ -48,12 +53,15 @@ const child = spawn(process.execPath, [fileURLToPath(new URL("azure-identity-bri
     OID_BRIDGE_TARGET_PORT: String(targetPort),
     OID_ALLOWED_TENANT_ID: tenant,
     OID_TRUSTED_PROXY_SECRET: proxySecret,
+    OID_ALLOWED_AUDIENCES: `${CLIENT_ID},api://${CLIENT_ID}`,
   },
-  stdio: ["ignore", "ignore", "pipe"],
+  stdio: ["ignore", "pipe", "pipe"],
 });
 
 let childError = "";
-child.stderr.on("data", (chunk) => { childError += String(chunk); });
+let childLog = "";
+child.stderr.on("data", (chunk) => { childError += String(chunk); childLog += String(chunk); });
+child.stdout.on("data", (chunk) => { childLog += String(chunk); });
 
 try {
   let ready = false;
@@ -79,6 +87,32 @@ try {
   assert.equal(protectedRequest.headers["x-oid-mfa"], "true");
   assert.equal(protectedRequest.headers["x-oid-proxy-secret"], proxySecret);
   assert.equal(protectedRequest.headers["x-ms-client-principal"], undefined);
+  assert.equal(protectedRequest.headers["x-oid-user-oid"], OBJECT_ID);
+  assert.equal(protectedRequest.headers["x-oid-tenant-id"], tenant);
+  assert.equal(protectedRequest.headers["x-oid-groups"], GROUP_ID);
+  assert.match(protectedRequest.headers["x-oid-auth-ref"], /^[A-F0-9]{12}$/);
+
+  // B2B guest: the #EXT# UPN is never used as the email; object ID is the key.
+  const guest = await fetch(`http://127.0.0.1:${bridgePort}/guest`, {
+    headers: { "x-ms-client-principal": encodedPrincipal({ email: "labs@oligopolypeptides.com", guestUpnFirst: true }), "x-oid-auth-ref": "AAAAAAAAAAAA" },
+  });
+  assert.equal(guest.status, 200);
+  const guestRequest = received.find((entry) => entry.path === "/guest");
+  assert.equal(guestRequest.headers["x-oid-user-email"], "labs@oligopolypeptides.com");
+  assert.equal(guestRequest.headers["x-oid-user-oid"], OBJECT_ID);
+  assert.notEqual(guestRequest.headers["x-oid-auth-ref"], "AAAAAAAAAAAA");
+
+  const noGroups = await fetch(`http://127.0.0.1:${bridgePort}/nogroups`, { headers: { "x-ms-client-principal": encodedPrincipal({ groups: [] }) } });
+  assert.equal(noGroups.status, 200);
+  assert.equal(received.find((entry) => entry.path === "/nogroups").headers["x-oid-groups"], undefined);
+
+  const noObjectId = await fetch(`http://127.0.0.1:${bridgePort}/protected`, { headers: { "x-ms-client-principal": encodedPrincipal({ objectId: "" }) } });
+  assert.equal(noObjectId.status, 401);
+  const wrongAudience = await fetch(`http://127.0.0.1:${bridgePort}/api/v1/search`, { headers: { "x-ms-client-principal": encodedPrincipal({ audience: "00000000-0000-0000-0000-000000000abc" }) } });
+  assert.equal(wrongAudience.status, 401);
+  const wrongAudienceBody = await wrongAudience.json();
+  assert.match(wrongAudienceBody.reference, /^OID-AUTH-401-[A-F0-9]{12}$/);
+  assert.ok(childLog.includes(`"reason":"WRONG_AUDIENCE","reference":"${wrongAudienceBody.reference}"`), "denial reference must correlate with server-side reason code");
 
   const wrongTenant = await fetch(`http://127.0.0.1:${bridgePort}/protected`, {
     headers: { "x-ms-client-principal": encodedPrincipal({ tenant: "00000000-0000-0000-0000-000000000999" }) },
@@ -89,6 +123,8 @@ try {
     headers: { "x-ms-client-principal": encodedPrincipal({ mfa: false }) },
   });
   assert.equal(noMfa.status, 401);
+  assert.match(await noMfa.text(), /OID-AUTH-401-[A-F0-9]{12}/);
+  assert.ok(childLog.includes('"reason":"MFA_CLAIM_MISSING"'));
 
   const noIdentity = await fetch(`http://127.0.0.1:${bridgePort}/protected`);
   assert.equal(noIdentity.status, 401);

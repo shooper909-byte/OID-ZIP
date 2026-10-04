@@ -2,6 +2,8 @@ import { timingSafeEqual } from "node:crypto";
 import { db } from "../database";
 import { ROLE_PERMISSIONS } from "../permissions";
 import { identityMode } from "../config/env";
+import { logSecurityEvent } from "../security/events";
+import { actorForEntraIdentity, entraIdentityFromHeaders, supportReference } from "./entra";
 
 export type Actor = { userId: string; email: string; roles: string[]; permissions: Set<string>; human: boolean };
 
@@ -42,12 +44,12 @@ export async function actorForServerRequest(request: Request): Promise<Actor> {
   }
 
   const secret = process.env.OID_TRUSTED_PROXY_SECRET ?? "";
-  if (!sameSecret(request.headers.get("x-oid-proxy-secret"), secret)) throw new Error("UNAUTHORIZED:UNTRUSTED_IDENTITY_PROXY");
-  const emailHeader = (process.env.OID_IDENTITY_EMAIL_HEADER ?? "x-oid-user-email").toLowerCase();
-  const email = request.headers.get(emailHeader)?.trim().toLowerCase();
-  if (!email) throw new Error("UNAUTHORIZED:MISSING_IDENTITY");
-  if (process.env.OID_REQUIRE_MFA === "true" && request.headers.get("x-oid-mfa") !== "true") throw new Error("UNAUTHORIZED:MFA_REQUIRED");
-  return databaseActor({ email });
+  if (!sameSecret(request.headers.get("x-oid-proxy-secret"), secret)) {
+    logSecurityEvent({ event: "AUTH_DECISION", outcome: "DENY", reason: "UNTRUSTED_IDENTITY_PROXY", reference: supportReference(401, request.headers.get("x-oid-auth-ref")) });
+    throw new Error("UNAUTHORIZED:UNTRUSTED_IDENTITY_PROXY");
+  }
+  // Primary key is the immutable Entra object ID; email is secondary metadata only.
+  return actorForEntraIdentity(entraIdentityFromHeaders(request.headers));
 }
 
 export function requireHumanActor(actor: Actor): void {

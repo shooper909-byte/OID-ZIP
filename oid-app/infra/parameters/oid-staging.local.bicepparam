@@ -18,6 +18,8 @@ param entraTenantId = '595ff05a-ce72-406d-82ff-e3f924d7f0e1'
 param entraClientId = '3374f580-d9d4-4d42-8e44-cbcc95fa6317'
 param entraAllowedGroupObjectIds = ['da7ae7e7-0bb3-4bdf-a411-75726b97b418']
 param administratorObjectIds = ['bab63204-7cb9-465d-a074-56124afeaa98']
+// Approved OID owner (Shelby). Auto-created with FOUNDER on first verified Entra sign-in if missing.
+param ownerBootstrapObjectIds = ['bab63204-7cb9-465d-a074-56124afeaa98']
 param azureResourceBudgetUsd = 55
 param budgetStartDate = '2026-08-01'
 param budgetContactEmails = [readEnvironmentVariable('OID_AZURE_BUDGET_CONTACT_EMAIL')]

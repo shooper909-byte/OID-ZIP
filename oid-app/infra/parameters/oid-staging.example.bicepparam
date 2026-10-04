@@ -22,6 +22,7 @@ param entraTenantId = '00000000-0000-0000-0000-000000000000'
 param entraClientId = '00000000-0000-0000-0000-000000000000'
 param entraAllowedGroupObjectIds = []
 param administratorObjectIds = []
+param ownerBootstrapObjectIds = []
 param azureResourceBudgetUsd = 55
 param budgetStartDate = '2026-08-01'
 param budgetContactEmails = [readEnvironmentVariable('OID_AZURE_BUDGET_CONTACT_EMAIL')]
