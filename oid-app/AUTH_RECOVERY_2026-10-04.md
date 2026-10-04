@@ -37,6 +37,7 @@ IMG=$ACR.azurecr.io/oid-application:$TAG
 
 # 1) Bridge first. The new bridge only adds headers, so the old app keeps working.
 az containerapp update -g $RG -n $APP --container-name identity-bridge --image $IMG \
+  --command node --args scripts/azure-identity-bridge.mjs \
   --set-env-vars OID_ALLOWED_AUDIENCES=3374f580-d9d4-4d42-8e44-cbcc95fa6317,api://3374f580-d9d4-4d42-8e44-cbcc95fa6317
 # 2) App
 az containerapp update -g $RG -n $APP --container-name oid --image $IMG \
